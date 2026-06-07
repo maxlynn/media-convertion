@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-title="page.title" data-page-desc="page.desc">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 100'%3E%3Crect width='120' height='100' rx='12' fill='%230a0a14' stroke='%2300f0ff' stroke-width='5'/%3E%3Ctext x='60' y='55' dominant-baseline='middle' text-anchor='middle' font-family='Arial,sans-serif' font-size='42' font-weight='900' fill='%2300f0ff'%3EMFC%3C/text%3E%3C/svg%3E">
+<title>Media Format Conversion Toolbox — 媒体格式转换工具箱</title>
+<meta name="description" content="一站式纯本地媒体格式转换工具箱，涵盖图片、音频、视频转换。文件不上传服务器，免费使用。">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0a0a14;
+  --bg-card: #0d0d20;
+  --bg-hover: #12122a;
+  --bg-disabled: #151530;
+  --text-primary: #e0e0f0;
+  --text-secondary: #8888aa;
+  --text-muted: #5a5a7a;
+  --border: #1a1a40;
+  --border-light: #151535;
+  --accent: #00f0ff;
+  --accent-hover: #00c4cf;
+  --accent-light: #5ef7ff;
+  --accent-glow: 0 0 12px rgba(0,240,255,0.3);
+  --accent-text-glow: 0 0 6px rgba(0,240,255,0.5);
+  --accent-bg: rgba(0,240,255,0.08);
+  --nav-bg: rgba(10,10,20,0.95);
+  --footer-bg: rgba(10,10,20,0.8);
+  --clip-angle: polygon(0 6px, 6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%);
+  --cyan: #00f0ff;
+  --magenta: #f72585;
+  --gold: #ffb800;
+  --green: #00ff88;
+}
+
+[data-accent="magenta"] {
+  --accent: #f72585;
+  --accent-hover: #d01a6e;
+  --accent-light: #ff5bab;
+  --accent-glow: 0 0 12px rgba(247,37,133,0.3);
+  --accent-text-glow: 0 0 6px rgba(247,37,133,0.5);
+  --accent-bg: rgba(247,37,133,0.08);
+}
+
+[data-theme="light"] {
+  --bg: #f0f2f5;
+  --bg-card: #fff;
+  --bg-hover: #f5f6f8;
+  --bg-disabled: #e8eaef;
+  --text-primary: #1a1d2e;
+  --text-secondary: #555a6e;
+  --text-muted: #8a8fa0;
+  --border: #d8dae0;
+  --border-light: #e8eaef;
+  --accent: #0ea5e9;
+  --accent-hover: #0284c7;
+  --accent-light: #38bdf8;
+  --accent-glow: 0 0 12px rgba(14,165,233,0.2);
+  --accent-text-glow: none;
+  --accent-bg: rgba(14,165,233,0.06);
+  --nav-bg: rgba(255,255,255,0.92);
+  --footer-bg: rgba(240,242,245,0.95);
+}
+
+[data-theme="light"][data-accent="magenta"] {
+  --accent: #e11d48;
+  --accent-hover: #be123c;
+  --accent-light: #fb7185;
+  --accent-glow: 0 0 12px rgba(225,29,72,0.2);
+  --accent-bg: rgba(225,29,72,0.06);
+}
+
+html {
+  font-size: 16px;
+  background: var(--bg);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  background: var(--bg);
+  background-image:
+    linear-gradient(rgba(0,240,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,240,255,0.015) 1px, transparent 1px);
+  background-size: 60px 60px;
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+[data-accent="magenta"] body {
+  background-image:
+    linear-gradient(rgba(247,37,133,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(247,37,133,0.015) 1px, transparent 1px);
+}
+
+[data-theme="light"] body {
+  background-image: none;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 32px;
+  border-bottom: 1px solid var(--border);
+  background: var(--nav-bg);
+  backdrop-filter: blur(10px);
+  gap: 16px;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-left { display: flex; align-items: center; gap: 24px; }
+.nav-right { display: flex; align-items: center; gap: 10px; }
+
+.logo {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  text-shadow: var(--accent-text-glow);
+}
+
+.logo span {
+  background: linear-gradient(135deg, var(--cyan), var(--magenta), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.theme-btn {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 1rem;
+  background: none;
+  border: 1px solid var(--border);
+  padding: 6px 10px;
+  cursor: pointer;
+  color: var(--text-muted);
+  clip-path: var(--clip-angle);
+  transition: all .2s;
+  line-height: 1;
+}
+
+.theme-btn.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  box-shadow: var(--accent-glow);
+  text-shadow: var(--accent-text-glow);
+}
+
+.theme-btn:hover {
+  border-color: var(--accent);
+  box-shadow: var(--accent-glow);
+}
+
+.lang-select {
+  font-size: 0.78rem;
+  padding: 5px 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  cursor: pointer;
+  min-width: 0;
+  clip-path: var(--clip-angle);
+}
+
+main {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 32px 60px;
+}
+
+.hero {
+  text-align: center;
+  padding: 80px 0 48px;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 6px 18px;
+  clip-path: var(--clip-angle);
+  margin-bottom: 28px;
+  text-shadow: var(--accent-text-glow);
+  box-shadow: var(--accent-glow);
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+
+.hero h1 .gradient-text {
+  background: linear-gradient(135deg, var(--cyan) 0%, var(--magenta) 50%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero p {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 640px;
+  margin: 0 auto 12px;
+  line-height: 1.7;
+}
+
+.hero-tagline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.hero-tagline span {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  clip-path: var(--clip-angle);
+  background: var(--bg-card);
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin: 0 0 64px;
+}
+
+.tool-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  clip-path: var(--clip-angle);
+  padding: 36px 28px 28px;
+  text-decoration: none;
+  color: inherit;
+  transition: all .35s;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.tool-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  transition: height .3s;
+}
+
+.tool-card.image::before { background: var(--cyan); box-shadow: 0 0 20px rgba(0,240,255,0.5); }
+.tool-card.audio::before { background: var(--magenta); box-shadow: 0 0 20px rgba(247,37,133,0.5); }
+.tool-card.video::before { background: var(--gold); box-shadow: 0 0 20px rgba(255,184,0,0.5); }
+
+.tool-card:hover {
+  transform: translateY(-6px);
+}
+
+.tool-card.image:hover {
+  border-color: rgba(0,240,255,0.5);
+  box-shadow: 0 8px 40px rgba(0,240,255,0.15), 0 0 0 1px rgba(0,240,255,0.2);
+}
+
+.tool-card.audio:hover {
+  border-color: rgba(247,37,133,0.5);
+  box-shadow: 0 8px 40px rgba(247,37,133,0.15), 0 0 0 1px rgba(247,37,133,0.2);
+}
+
+.tool-card.video:hover {
+  border-color: rgba(255,184,0,0.5);
+  box-shadow: 0 8px 40px rgba(255,184,0,0.15), 0 0 0 1px rgba(255,184,0,0.2);
+}
+
+.tool-card:hover::before { height: 4px; }
+
+.tool-icon {
+  font-size: 2.4rem;
+  margin-bottom: 20px;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+}
+
+.tool-card.image .tool-icon { background: rgba(0,240,255,0.08); }
+.tool-card.audio .tool-icon { background: rgba(247,37,133,0.08); }
+.tool-card.video .tool-icon { background: rgba(255,184,0,0.08); }
+
+.tool-card h2 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  letter-spacing: 0.03em;
+}
+
+.tool-card.image h2 { color: var(--cyan); }
+.tool-card.audio h2 { color: var(--magenta); }
+.tool-card.video h2 { color: var(--gold); }
+
+.tool-card .desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 16px;
+  flex: 1;
+}
+
+.tool-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.tool-tags span {
+  font-size: 0.68rem;
+  padding: 3px 10px;
+  clip-path: var(--clip-angle);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.tool-card.image .tool-tags span {
+  color: var(--cyan);
+  border: 1px solid rgba(0,240,255,0.25);
+  background: rgba(0,240,255,0.06);
+}
+
+.tool-card.audio .tool-tags span {
+  color: var(--magenta);
+  border: 1px solid rgba(247,37,133,0.25);
+  background: rgba(247,37,133,0.06);
+}
+
+.tool-card.video .tool-tags span {
+  color: var(--gold);
+  border: 1px solid rgba(255,184,0,0.25);
+  background: rgba(255,184,0,0.06);
+}
+
+.tool-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 10px 0;
+  letter-spacing: 0.04em;
+  transition: gap .25s;
+}
+
+.tool-card.image .tool-cta { color: var(--cyan); }
+.tool-card.audio .tool-cta { color: var(--magenta); }
+.tool-card.video .tool-cta { color: var(--gold); }
+
+.tool-card:hover .tool-cta { gap: 14px; }
+
+.tool-cta .arrow {
+  font-size: 1.1rem;
+  transition: transform .25s;
+}
+
+.tool-card:hover .tool-cta .arrow {
+  transform: translateX(4px);
+}
+
+.why-section {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.why-section h2 {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  text-shadow: var(--accent-text-glow);
+  margin-bottom: 28px;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.why-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  clip-path: var(--clip-angle);
+  padding: 24px 16px;
+  transition: all .25s;
+}
+
+.why-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--accent-glow);
+}
+
+.why-card .icon { font-size: 1.6rem; margin-bottom: 10px; }
+.why-card h3 { font-size: 0.82rem; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
+.why-card p { font-size: 0.74rem; color: var(--text-secondary); line-height: 1.5; }
+
+footer {
+  text-align: center; padding: 20px 32px; font-size: 0.72rem;
+  color: var(--text-muted); border-top: 1px solid var(--border); margin-top: auto;
+  background: var(--footer-bg);
+}
+
+footer a { color: var(--text-secondary); text-decoration: none; transition: color .2s; }
+footer a:hover { color: var(--accent); }
+
+.footer-links { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px; margin-bottom: 8px; }
+
+@media (max-width: 900px) {
+  .tools-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto 48px; }
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero { padding: 48px 0 32px; }
+  nav { padding: 12px 20px; }
+  main { padding: 0 20px 40px; }
+}
+
+@media (max-width: 500px) {
+  .why-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <a href="index.html" class="logo">Media <span>Format</span> Conversion</a>
+  </div>
+  <div class="nav-right">
+    <select class="lang-select" id="lang-select">
+      <option value="zh-CN">简体中文</option>
+      <option value="zh-HK">繁體中文</option>
+      <option value="en">English</option>
+      <option value="ja">日本語</option>
+      <option value="ko">한국어</option>
+    </select>
+    <button class="theme-btn active" id="btn-theme" data-i18n-title="theme.dark_hint" title="点击切换为白天模式">🌙</button>
+    <button class="theme-btn active" id="btn-accent" data-i18n-title="accent.cyan_hint" title="点击切换为粉霓虹主题">🩵</button>
+  </div>
+</nav>
+
+<main>
+
+<section class="hero">
+  <div class="hero-badge" data-i18n="hero.badge">Toolbox</div>
+  <h1 data-i18n-html="hero.title">一个<span class="gradient-text">工具箱</span>，<br>搞定所有媒体格式转换</h1>
+  <p data-i18n="hero.desc">图片、音频、视频 — 三大转换引擎汇聚于此。纯浏览器端运行，文件不上传服务器，断网也能用。</p>
+  <div class="hero-tagline">
+    <span data-i18n="hero.tag1">🔒 隐私安全</span>
+    <span data-i18n="hero.tag2">⚡ 本地极速</span>
+    <span data-i18n="hero.tag3">🆓 完全免费</span>
+    <span data-i18n="hero.tag4">🌐 无需注册</span>
+  </div>
+</section>
+
+<div class="tools-grid">
+
+  <a href="../2/Image format conversion/index.html" class="tool-card image">
+    <div class="tool-icon">🖼️</div>
+    <h2 data-i18n="tool.image.title">Image Format Conversion</h2>
+    <p class="desc" data-i18n="tool.image.desc">批量转换图片格式，支持 WebP、AVIF、PNG、JPEG、BMP 互转。可调质量与尺寸，智能压缩不减清晰度。</p>
+    <div class="tool-tags">
+      <span>WebP</span><span>AVIF</span><span>PNG</span><span>JPEG</span><span>BMP</span>
+    </div>
+    <div class="tool-cta"><span data-i18n="tool.cta">打开工具</span> <span class="arrow">→</span></div>
+  </a>
+
+  <a href="../Audio format conversion/index.html" class="tool-card audio">
+    <div class="tool-icon">🎵</div>
+    <h2 data-i18n="tool.audio.title">Audio Format Conversion</h2>
+    <p class="desc" data-i18n="tool.audio.desc">专业音频转码引擎，支持 MP3、WAV、OGG、AAC、FLAC、OPUS、M4A。自由调整比特率、采样率与声道。</p>
+    <div class="tool-tags">
+      <span>MP3</span><span>FLAC</span><span>WAV</span><span>AAC</span><span>OPUS</span><span>M4A</span>
+    </div>
+    <div class="tool-cta"><span data-i18n="tool.cta">打开工具</span> <span class="arrow">→</span></div>
+  </a>
+
+  <a href="../Video-format-conversion/index.html" class="tool-card video">
+    <div class="tool-icon">🎬</div>
+    <h2 data-i18n="tool.video.title">Video Format Conversion</h2>
+    <p class="desc" data-i18n="tool.video.desc">视频转码与 App 适配一站搞定。内置抖音/微信/小红书/B站预设，一键裁剪到各平台最佳尺寸。</p>
+    <div class="tool-tags">
+      <span>MP4</span><span>MOV</span><span>MKV</span><span>GIF</span><span data-i18n="tag.douyin">抖音</span><span data-i18n="tag.wechat">微信</span>
+    </div>
+    <div class="tool-cta"><span data-i18n="tool.cta">打开工具</span> <span class="arrow">→</span></div>
+  </a>
+
+</div>
+
+<section class="why-section">
+  <h2 data-i18n="why.title">💎 为什么选择本地转换</h2>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="icon">🔒</div>
+      <h3 data-i18n="why.card1.title">绝对隐私</h3>
+      <p data-i18n="why.card1.desc">文件永不离开你的设备，不上传任何服务器，断网照常使用。</p>
+    </div>
+    <div class="why-card">
+      <div class="icon">⚡</div>
+      <h3 data-i18n="why.card2.title">极速处理</h3>
+      <p data-i18n="why.card2.desc">本地引擎直接运行，无网络延迟，大文件也能快速完成转换。</p>
+    </div>
+    <div class="why-card">
+      <div class="icon">🎯</div>
+      <h3 data-i18n="why.card3.title">专业品质</h3>
+      <p data-i18n="why.card3.desc">Canvas 与 ffmpeg.wasm 驱动，输出质量媲美桌面端专业软件。</p>
+    </div>
+    <div class="why-card">
+      <div class="icon">♾️</div>
+      <h3 data-i18n="why.card4.title">无限制</h3>
+      <p data-i18n="why.card4.desc">无文件数量限制、无文件大小上限、无水印、无订阅。永久免费。</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="../2/Image format conversion/privacy.html" data-i18n="footer.privacy">隐私政策</a>
+    <a href="../2/Image format conversion/terms.html" data-i18n="footer.terms">服务条款</a>
+    <a href="../2/Image format conversion/about.html" data-i18n="footer.about">联系我们</a>
+  </div>
+  <div style="margin-top:4px" data-i18n="footer.copyright">&copy; 2026 Media Format Conversion Toolbox. All rights reserved.</div>
+</footer>
+
+<script>
+const I18N = {
+  current: 'zh-CN',
+
+  supported: [
+    { code: 'zh-CN', label: '简体中文' },
+    { code: 'zh-HK', label: '繁體中文' },
+    { code: 'en',    label: 'English' },
+    { code: 'ja',    label: '日本語' },
+    { code: 'ko',    label: '한국어' },
+  ],
+
+  dict: {
+    'page.title': {
+      'zh-CN': 'Media Format Conversion Toolbox — 媒体格式转换工具箱',
+      'zh-HK': 'Media Format Conversion Toolbox — 媒體格式轉換工具箱',
+      'en':    'Media Format Conversion Toolbox — All-in-One Media Converter',
+      'ja':    'Media Format Conversion Toolbox — メディア形式変換ツールボックス',
+      'ko':    'Media Format Conversion Toolbox — 미디어 형식 변환 도구 상자',
+    },
+    'page.desc': {
+      'zh-CN': '一站式纯本地媒体格式转换工具箱，涵盖图片、音频、视频转换。文件不上传服务器，免费使用。',
+      'zh-HK': '一站式純本機媒體格式轉換工具箱，涵蓋圖片、音頻、視頻轉換。檔案不上載伺服器，免費使用。',
+      'en':    'All-in-one local media format conversion toolbox covering images, audio, and video. No uploads, free to use.',
+      'ja':    '画像・音声・動画の変換をカバーするオールインワンのローカルメディア変換ツールボックス。アップロード不要、無料。',
+      'ko':    '이미지, 오디오, 비디오 변환을 아우르는 올인원 로컬 미디어 형식 변환 도구 상자. 업로드 없음, 무료 사용.',
+    },
+
+    'hero.badge': { 'zh-CN': 'Toolbox', 'zh-HK': 'Toolbox', 'en': 'Toolbox', 'ja': 'Toolbox', 'ko': 'Toolbox' },
+    'hero.title': {
+      'zh-CN': '一个<span class="gradient-text">工具箱</span>，<br>搞定所有媒体格式转换',
+      'zh-HK': '一個<span class="gradient-text">工具箱</span>，<br>搞定所有媒體格式轉換',
+      'en':    'One <span class="gradient-text">Toolbox</span><br>for All Media Format Conversions',
+      'ja':    '一つの<span class="gradient-text">ツールボックス</span>で<br>あらゆるメディア形式変換を',
+      'ko':    '하나의 <span class="gradient-text">도구 상자</span>로<br>모든 미디어 형식 변환을',
+    },
+    'hero.desc': {
+      'zh-CN': '图片、音频、视频 — 三大转换引擎汇聚于此。纯浏览器端运行，文件不上传服务器，断网也能用。',
+      'zh-HK': '圖片、音頻、視頻 — 三大轉換引擎匯聚於此。純瀏覽器端運行，檔案不上載伺服器，斷網也能用。',
+      'en':    'Images, audio, video — three conversion engines in one place. Runs entirely in your browser, no uploads, works offline.',
+      'ja':    '画像・音声・動画 — 3つの変換エンジンを1か所に。ブラウザだけで動作、アップロード不要、オフラインでも使用可能。',
+      'ko':    '이미지, 오디오, 비디오 — 세 가지 변환 엔진을 한곳에. 브라우저에서만 실행, 업로드 없음, 오프라인 사용 가능.',
+    },
+    'hero.tag1': { 'zh-CN': '🔒 隐私安全', 'zh-HK': '🔒 私隱安全', 'en': '🔒 Privacy Safe', 'ja': '🔒 プライバシー保護', 'ko': '🔒 개인정보 보호' },
+    'hero.tag2': { 'zh-CN': '⚡ 本地极速', 'zh-HK': '⚡ 本機極速', 'en': '⚡ Local Speed', 'ja': '⚡ ローカル高速', 'ko': '⚡ 로컬 고속' },
+    'hero.tag3': { 'zh-CN': '🆓 完全免费', 'zh-HK': '🆓 完全免費', 'en': '🆓 Totally Free', 'ja': '🆓 完全無料', 'ko': '🆓 완전 무료' },
+    'hero.tag4': { 'zh-CN': '🌐 无需注册', 'zh-HK': '🌐 無需註冊', 'en': '🌐 No Sign-up', 'ja': '🌐 登録不要', 'ko': '🌐 가입 불필요' },
+
+    'tool.image.title': {
+      'zh-CN': 'Image Format Conversion',
+      'zh-HK': 'Image Format Conversion',
+      'en':    'Image Format Conversion',
+      'ja':    'Image Format Conversion',
+      'ko':    'Image Format Conversion',
+    },
+    'tool.image.desc': {
+      'zh-CN': '批量转换图片格式，支持 WebP、AVIF、PNG、JPEG、BMP 互转。可调质量与尺寸，智能压缩不减清晰度。',
+      'zh-HK': '批量轉換圖片格式，支援 WebP、AVIF、PNG、JPEG、BMP 互轉。可調質量與尺寸，智能壓縮不減清晰度。',
+      'en':    'Batch convert image formats — WebP, AVIF, PNG, JPEG, BMP. Adjustable quality and size, smart compression without quality loss.',
+      'ja':    '画像形式をバッチ変換 — WebP、AVIF、PNG、JPEG、BMPに対応。品質とサイズを調整可能、画質を落とさないスマート圧縮。',
+      'ko':    '이미지 형식 일괄 변환 — WebP, AVIF, PNG, JPEG, BMP 지원. 품질과 크기 조절 가능, 화질 손실 없는 스마트 압축.',
+    },
+    'tool.audio.title': {
+      'zh-CN': 'Audio Format Conversion',
+      'zh-HK': 'Audio Format Conversion',
+      'en':    'Audio Format Conversion',
+      'ja':    'Audio Format Conversion',
+      'ko':    'Audio Format Conversion',
+    },
+    'tool.audio.desc': {
+      'zh-CN': '专业音频转码引擎，支持 MP3、WAV、OGG、AAC、FLAC、OPUS、M4A。自由调整比特率、采样率与声道。',
+      'zh-HK': '專業音頻轉碼引擎，支援 MP3、WAV、OGG、AAC、FLAC、OPUS、M4A。自由調整比特率、採樣率與聲道。',
+      'en':    'Professional audio transcoding engine — MP3, WAV, OGG, AAC, FLAC, OPUS, M4A. Adjust bitrate, sample rate, and channels freely.',
+      'ja':    'プロフェッショナルな音声トランスコードエンジン — MP3、WAV、OGG、AAC、FLAC、OPUS、M4A対応。ビットレート、サンプルレート、チャンネルを自由に調整。',
+      'ko':    '전문 오디오 트랜스코딩 엔진 — MP3, WAV, OGG, AAC, FLAC, OPUS, M4A 지원. 비트레이트, 샘플레이트, 채널 자유 조정.',
+    },
+    'tool.video.title': {
+      'zh-CN': 'Video Format Conversion',
+      'zh-HK': 'Video Format Conversion',
+      'en':    'Video Format Conversion',
+      'ja':    'Video Format Conversion',
+      'ko':    'Video Format Conversion',
+    },
+    'tool.video.desc': {
+      'zh-CN': '视频转码与 App 适配一站搞定。内置抖音/微信/小红书/B站预设，一键裁剪到各平台最佳尺寸。',
+      'zh-HK': '視頻轉碼與 App 適配一站搞定。內置抖音/微信/小紅書/B站預設，一鍵裁剪到各平台最佳尺寸。',
+      'en':    'Video transcoding and app presets in one place. Built-in presets for TikTok, WeChat, RED, Bilibili — crop to optimal sizes in one click.',
+      'ja':    '動画トランスコードとアプリプリセットを1か所に。TikTok、WeChat、RED、Bilibiliのプリセット内蔵、ワンクリックで最適サイズにクロップ。',
+      'ko':    '비디오 트랜스코딩과 앱 프리셋을 한곳에서. TikTok, WeChat, RED, Bilibili 프리셋 내장, 원클릭으로 최적 크기로 자르기.',
+    },
+    'tool.cta': { 'zh-CN': '打开工具', 'zh-HK': '打開工具', 'en': 'Open Tool', 'ja': 'ツールを開く', 'ko': '도구 열기' },
+
+    'tag.douyin': { 'zh-CN': '抖音', 'zh-HK': '抖音', 'en': 'TikTok', 'ja': 'TikTok', 'ko': 'TikTok' },
+    'tag.wechat': { 'zh-CN': '微信', 'zh-HK': '微信', 'en': 'WeChat', 'ja': 'WeChat', 'ko': 'WeChat' },
+
+    'why.title': {
+      'zh-CN': '💎 为什么选择本地转换', 'zh-HK': '💎 為什麼選擇本機轉換', 'en': '💎 Why Local Conversion', 'ja': '💎 ローカル変換を選ぶ理由', 'ko': '💎 로컬 변환을 선택하는 이유',
+    },
+    'why.card1.title': { 'zh-CN': '绝对隐私', 'zh-HK': '絕對私隱', 'en': 'Absolute Privacy', 'ja': '完全なプライバシー', 'ko': '완벽한 개인정보 보호' },
+    'why.card1.desc':  { 'zh-CN': '文件永不离开你的设备，不上传任何服务器，断网照常使用。', 'zh-HK': '檔案永不會離開你的裝置，不上載任何伺服器，斷網照常使用。', 'en': 'Files never leave your device. No server uploads, works offline.', 'ja': 'ファイルはあなたのデバイスから離れません。サーバーへのアップロードなし、オフラインでも動作。', 'ko': '파일이 기기를 떠나지 않습니다. 서버 업로드 없음, 오프라인에서도 작동.' },
+    'why.card2.title': { 'zh-CN': '极速处理', 'zh-HK': '極速處理', 'en': 'Lightning Fast', 'ja': '超高速処理', 'ko': '초고속 처리' },
+    'why.card2.desc':  { 'zh-CN': '本地引擎直接运行，无网络延迟，大文件也能快速完成转换。', 'zh-HK': '本機引擎直接運行，無網絡延遲，大檔案也能快速完成轉換。', 'en': 'Local engine runs directly — no network latency. Large files convert quickly.', 'ja': 'ローカルエンジンが直接実行 — ネットワーク遅延なし。大きなファイルも高速変換。', 'ko': '로컬 엔진 직접 실행 — 네트워크 지연 없음. 대용량 파일도 빠르게 변환.' },
+    'why.card3.title': { 'zh-CN': '专业品质', 'zh-HK': '專業品質', 'en': 'Pro Quality', 'ja': 'プロ品質', 'ko': '전문가 품질' },
+    'why.card3.desc':  { 'zh-CN': 'Canvas 与 ffmpeg.wasm 驱动，输出质量媲美桌面端专业软件。', 'zh-HK': 'Canvas 與 ffmpeg.wasm 驅動，輸出品質媲美桌面端專業軟件。', 'en': 'Powered by Canvas and ffmpeg.wasm — output quality rivals desktop software.', 'ja': 'Canvasとffmpeg.wasmで駆動 — デスクトップソフトに匹敵する出力品質。', 'ko': 'Canvas 및 ffmpeg.wasm 기반 — 데스크톱 소프트웨어에 필적하는 출력 품질.' },
+    'why.card4.title': { 'zh-CN': '无限制', 'zh-HK': '無限制', 'en': 'No Limits', 'ja': '無制限', 'ko': '무제한' },
+    'why.card4.desc':  { 'zh-CN': '无文件数量限制、无文件大小上限、无水印、无订阅。永久免费。', 'zh-HK': '無檔案數量限制、無檔案大小上限、無水印、無訂閱。永久免費。', 'en': 'No file count limit, no size cap, no watermarks, no subscription. Free forever.', 'ja': 'ファイル数無制限、サイズ上限なし、透かしなし、サブスクリプションなし。永久無料。', 'ko': '파일 수 제한 없음, 크기 제한 없음, 워터마크 없음, 구독 없음. 영구 무료.' },
+
+    'footer.privacy': { 'zh-CN': '隐私政策', 'zh-HK': '私隱政策', 'en': 'Privacy Policy', 'ja': 'プライバシーポリシー', 'ko': '개인정보처리방침' },
+    'footer.terms':   { 'zh-CN': '服务条款', 'zh-HK': '服務條款', 'en': 'Terms of Service', 'ja': '利用規約', 'ko': '서비스 약관' },
+    'footer.about':   { 'zh-CN': '联系我们', 'zh-HK': '聯絡我們', 'en': 'Contact Us', 'ja': 'お問い合わせ', 'ko': '문의하기' },
+    'footer.copyright': {
+      'en':  '&copy; 2026 Media Format Conversion Toolbox. All rights reserved.',
+      'zh-CN': '&copy; 2026 Media Format Conversion Toolbox. All rights reserved.',
+      'zh-HK': '&copy; 2026 Media Format Conversion Toolbox. All rights reserved.',
+      'ja':  '&copy; 2026 Media Format Conversion Toolbox. All rights reserved.',
+      'ko':  '&copy; 2026 Media Format Conversion Toolbox. All rights reserved.',
+    },
+
+    'theme.dark_hint':     { 'zh-CN': '点击切换为白天模式', 'zh-HK': '點擊切換為白天模式', 'en': 'Switch to light mode', 'ja': 'ライトモードに切替', 'ko': '라이트 모드로 전환' },
+    'theme.light_hint':    { 'zh-CN': '点击切换为夜间模式', 'zh-HK': '點擊切換為夜間模式', 'en': 'Switch to dark mode', 'ja': 'ダークモードに切替', 'ko': '다크 모드로 전환' },
+    'accent.cyan_hint':    { 'zh-CN': '点击切换为粉霓虹主题', 'zh-HK': '點擊切換為粉霓虹主題', 'en': 'Switch to pink neon', 'ja': 'ピンクネオンに切替', 'ko': '핑크 네온으로 전환' },
+    'accent.magenta_hint': { 'zh-CN': '点击切换为青霓虹主题', 'zh-HK': '點擊切換為青霓虹主題', 'en': 'Switch to cyan neon', 'ja': 'シアンネオンに切替', 'ko': '시안 네온으로 전환' },
+  },
+
+  t(key) {
+    const entry = this.dict[key];
+    if (!entry) return key;
+    return entry[this.current] || entry['en'] || key;
+  },
+
+  setLang(code) {
+    this.current = code;
+    localStorage.setItem('imgshift-lang', code);
+    this.apply();
+  },
+
+  apply() {
+    document.documentElement.lang = this.current;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      const text = this.t(key);
+      if (text) el.textContent = text;
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.getAttribute('data-i18n-html');
+      const text = this.t(key);
+      if (text) el.innerHTML = text;
+    });
+    document.querySelectorAll('[data-i18n-title]').forEach(el => {
+      const key = el.getAttribute('data-i18n-title');
+      const text = this.t(key);
+      if (text) el.title = text;
+    });
+
+    const titleEl = document.querySelector('title');
+    const pageTitleKey = document.documentElement.getAttribute('data-page-title');
+    if (pageTitleKey && titleEl) titleEl.textContent = this.t(pageTitleKey);
+
+    const descEl = document.querySelector('meta[name="description"]');
+    const descKey = document.documentElement.getAttribute('data-page-desc');
+    if (descKey && descEl) descEl.setAttribute('content', this.t(descKey));
+
+    this.updateThemeButtons();
+    this.updateLangLabel();
+  },
+
+  updateThemeButtons() {
+    const btn = document.getElementById('btn-theme');
+    const accentBtn = document.getElementById('btn-accent');
+    const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+    const accent = document.documentElement.getAttribute('data-accent') || 'cyan';
+    if (btn) {
+      btn.textContent = theme === 'dark' ? '🌙' : '☀️';
+      btn.title = this.t(theme === 'dark' ? 'theme.dark_hint' : 'theme.light_hint');
+    }
+    if (accentBtn) {
+      accentBtn.textContent = accent === 'cyan' ? '🩵' : '💗';
+      accentBtn.title = this.t(accent === 'cyan' ? 'accent.cyan_hint' : 'accent.magenta_hint');
+    }
+  },
+
+  updateLangLabel() {
+    const sel = document.getElementById('lang-select');
+    if (sel) sel.value = this.current;
+  },
+
+  init() {
+    const saved = localStorage.getItem('imgshift-lang');
+    if (saved && this.supported.some(s => s.code === saved)) {
+      this.current = saved;
+    }
+    this.apply();
+  }
+};
+
+(function initTheme() {
+  const savedTheme = localStorage.getItem('imgshift-theme') || 'dark';
+  const savedAccent = localStorage.getItem('imgshift-accent') || 'cyan';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  document.documentElement.setAttribute('data-accent', savedAccent);
+})();
+
+document.addEventListener('DOMContentLoaded', () => {
+  I18N.init();
+
+  const themeBtn = document.getElementById('btn-theme');
+  const accentBtn = document.getElementById('btn-accent');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+      const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+      const next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('imgshift-theme', next);
+      I18N.updateThemeButtons();
+    });
+  }
+  if (accentBtn) {
+    accentBtn.addEventListener('click', () => {
+      const cur = document.documentElement.getAttribute('data-accent') || 'cyan';
+      const next = cur === 'cyan' ? 'magenta' : 'cyan';
+      document.documentElement.setAttribute('data-accent', next);
+      localStorage.setItem('imgshift-accent', next);
+      I18N.updateThemeButtons();
+    });
+  }
+
+  const sel = document.getElementById('lang-select');
+  if (sel) {
+    sel.addEventListener('change', () => {
+      I18N.setLang(sel.value);
+    });
+  }
+});
+</script>
+
+</body>
+</html>
