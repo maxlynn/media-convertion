@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 100'%3E%3Crect width='120' height='100' rx='12' fill='%230a0a14' stroke='%2300f0ff' stroke-width='5'/%3E%3Ctext x='60' y='55' dominant-baseline='middle' text-anchor='middle' font-family='Arial,sans-serif' font-size='42' font-weight='900' fill='%2300f0ff'%3EMFC%3C/text%3E%3C/svg%3E">
-<title>Media Format Conversion Toolbox — 媒体格式转换工具箱</title>
-<meta name="description" content="一站式纯本地媒体格式转换工具箱，涵盖图片、音频、视频转换。文件不上传服务器，免费使用。">
+<title>Media Format Conversion - 浏览器本地处理，不上传服务器 | 免费浏览器多媒体格式转换器</title>
+<meta name="description" content="浏览器本地处理，不上传服务器 | 免费浏览器多媒体格式转换器">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -455,6 +455,7 @@ footer a:hover { color: var(--accent); }
   <div class="nav-left">
     <a href="index.html" class="logo">Media <span>Format</span> Conversion</a>
   </div>
+  <div style="font-size:1.5rem;font-weight:900;letter-spacing:0.04em;color:var(--text-primary);flex:1;text-align:center">浏览器本地处理，不上传服务器 | 免费浏览器多媒体格式转换器</div>
   <div class="nav-right">
     <select class="lang-select" id="lang-select">
       <option value="zh-CN">简体中文</option>
@@ -470,6 +471,40 @@ footer a:hover { color: var(--accent); }
 
 <main>
 
+<div class="tools-grid">
+
+  <a href="image/index.html" class="tool-card image">
+    <div class="tool-icon">🖼️</div>
+    <h2 data-i18n="tool.image.title">Image Format Conversion</h2>
+    <p class="desc" data-i18n="tool.image.desc">批量转换图片格式，支持 WebP、AVIF、PNG、JPEG、BMP 互转。可调质量与尺寸，智能压缩不减清晰度。</p>
+    <div class="tool-tags">
+      <span>WebP</span><span>AVIF</span><span>PNG</span><span>JPEG</span><span>BMP</span>
+    </div>
+    <div class="tool-cta"><span data-i18n="tool.cta">打开工具</span> <span class="arrow">→</span></div>
+  </a>
+
+  <a href="audio/index.html" class="tool-card audio">
+    <div class="tool-icon">🎵</div>
+    <h2 data-i18n="tool.audio.title">Audio Format Conversion</h2>
+    <p class="desc" data-i18n="tool.audio.desc">专业音频转码引擎，支持 MP3、WAV、OGG、AAC、FLAC、OPUS、M4A。自由调整比特率、采样率与声道。</p>
+    <div class="tool-tags">
+      <span>MP3</span><span>FLAC</span><span>WAV</span><span>AAC</span><span>OPUS</span><span>M4A</span>
+    </div>
+    <div class="tool-cta"><span data-i18n="tool.cta">打开工具</span> <span class="arrow">→</span></div>
+  </a>
+
+  <a href="video/index.html" class="tool-card video">
+    <div class="tool-icon">🎬</div>
+    <h2 data-i18n="tool.video.title">Video Format Conversion</h2>
+    <p class="desc" data-i18n="tool.video.desc">视频转码与 App 适配一站搞定。内置抖音/微信/小红书/B站预设，一键裁剪到各平台最佳尺寸。</p>
+    <div class="tool-tags">
+      <span>MP4</span><span>MOV</span><span>MKV</span><span>GIF</span><span data-i18n="tag.douyin">抖音</span><span data-i18n="tag.wechat">微信</span>
+    </div>
+    <div class="tool-cta"><span data-i18n="tool.cta">打开工具</span> <span class="arrow">→</span></div>
+  </a>
+
+</div>
+
 <section class="hero">
   <div class="hero-badge" data-i18n="hero.badge">Toolbox</div>
   <h1 data-i18n-html="hero.title">一个<span class="gradient-text">工具箱</span>，<br>搞定所有媒体格式转换</h1>
@@ -481,40 +516,6 @@ footer a:hover { color: var(--accent); }
     <span data-i18n="hero.tag4">🌐 无需注册</span>
   </div>
 </section>
-
-<div class="tools-grid">
-
-  <a href="../2/Image format conversion/index.html" class="tool-card image">
-    <div class="tool-icon">🖼️</div>
-    <h2 data-i18n="tool.image.title">Image Format Conversion</h2>
-    <p class="desc" data-i18n="tool.image.desc">批量转换图片格式，支持 WebP、AVIF、PNG、JPEG、BMP 互转。可调质量与尺寸，智能压缩不减清晰度。</p>
-    <div class="tool-tags">
-      <span>WebP</span><span>AVIF</span><span>PNG</span><span>JPEG</span><span>BMP</span>
-    </div>
-    <div class="tool-cta"><span data-i18n="tool.cta">打开工具</span> <span class="arrow">→</span></div>
-  </a>
-
-  <a href="../Audio format conversion/index.html" class="tool-card audio">
-    <div class="tool-icon">🎵</div>
-    <h2 data-i18n="tool.audio.title">Audio Format Conversion</h2>
-    <p class="desc" data-i18n="tool.audio.desc">专业音频转码引擎，支持 MP3、WAV、OGG、AAC、FLAC、OPUS、M4A。自由调整比特率、采样率与声道。</p>
-    <div class="tool-tags">
-      <span>MP3</span><span>FLAC</span><span>WAV</span><span>AAC</span><span>OPUS</span><span>M4A</span>
-    </div>
-    <div class="tool-cta"><span data-i18n="tool.cta">打开工具</span> <span class="arrow">→</span></div>
-  </a>
-
-  <a href="../Video-format-conversion/index.html" class="tool-card video">
-    <div class="tool-icon">🎬</div>
-    <h2 data-i18n="tool.video.title">Video Format Conversion</h2>
-    <p class="desc" data-i18n="tool.video.desc">视频转码与 App 适配一站搞定。内置抖音/微信/小红书/B站预设，一键裁剪到各平台最佳尺寸。</p>
-    <div class="tool-tags">
-      <span>MP4</span><span>MOV</span><span>MKV</span><span>GIF</span><span data-i18n="tag.douyin">抖音</span><span data-i18n="tag.wechat">微信</span>
-    </div>
-    <div class="tool-cta"><span data-i18n="tool.cta">打开工具</span> <span class="arrow">→</span></div>
-  </a>
-
-</div>
 
 <section class="why-section">
   <h2 data-i18n="why.title">💎 为什么选择本地转换</h2>
@@ -535,9 +536,9 @@ footer a:hover { color: var(--accent); }
       <p data-i18n="why.card3.desc">Canvas 与 ffmpeg.wasm 驱动，输出质量媲美桌面端专业软件。</p>
     </div>
     <div class="why-card">
-      <div class="icon">♾️</div>
-      <h3 data-i18n="why.card4.title">无限制</h3>
-      <p data-i18n="why.card4.desc">无文件数量限制、无文件大小上限、无水印、无订阅。永久免费。</p>
+      <div class="icon">🚫</div>
+      <h3 data-i18n="why.card4.title">无水印</h3>
+      <p data-i18n="why.card4.desc">所有转换输出均不含水印，保持原始纯净画质，无需任何付费解锁。</p>
     </div>
   </div>
 </section>
@@ -546,9 +547,9 @@ footer a:hover { color: var(--accent); }
 
 <footer>
   <div class="footer-links">
-    <a href="../2/Image format conversion/privacy.html" data-i18n="footer.privacy">隐私政策</a>
-    <a href="../2/Image format conversion/terms.html" data-i18n="footer.terms">服务条款</a>
-    <a href="../2/Image format conversion/about.html" data-i18n="footer.about">联系我们</a>
+    <a href="image/privacy.html" data-i18n="footer.privacy">隐私政策</a>
+    <a href="image/terms.html" data-i18n="footer.terms">服务条款</a>
+    <a href="image/about.html" data-i18n="footer.about">联系我们</a>
   </div>
   <div style="margin-top:4px" data-i18n="footer.copyright">&copy; 2026 Media Format Conversion Toolbox. All rights reserved.</div>
 </footer>
@@ -567,14 +568,14 @@ const I18N = {
 
   dict: {
     'page.title': {
-      'zh-CN': 'Media Format Conversion Toolbox — 媒体格式转换工具箱',
+      'zh-CN': 'Media Format Conversion - 浏览器本地处理，不上传服务器 | 免费浏览器多媒体格式转换器',
       'zh-HK': 'Media Format Conversion Toolbox — 媒體格式轉換工具箱',
       'en':    'Media Format Conversion Toolbox — All-in-One Media Converter',
       'ja':    'Media Format Conversion Toolbox — メディア形式変換ツールボックス',
       'ko':    'Media Format Conversion Toolbox — 미디어 형식 변환 도구 상자',
     },
     'page.desc': {
-      'zh-CN': '一站式纯本地媒体格式转换工具箱，涵盖图片、音频、视频转换。文件不上传服务器，免费使用。',
+      'zh-CN': '浏览器本地处理，不上传服务器 | 免费浏览器多媒体格式转换器',
       'zh-HK': '一站式純本機媒體格式轉換工具箱，涵蓋圖片、音頻、視頻轉換。檔案不上載伺服器，免費使用。',
       'en':    'All-in-one local media format conversion toolbox covering images, audio, and video. No uploads, free to use.',
       'ja':    '画像・音声・動画の変換をカバーするオールインワンのローカルメディア変換ツールボックス。アップロード不要、無料。',
@@ -657,8 +658,8 @@ const I18N = {
     'why.card2.desc':  { 'zh-CN': '本地引擎直接运行，无网络延迟，大文件也能快速完成转换。', 'zh-HK': '本機引擎直接運行，無網絡延遲，大檔案也能快速完成轉換。', 'en': 'Local engine runs directly — no network latency. Large files convert quickly.', 'ja': 'ローカルエンジンが直接実行 — ネットワーク遅延なし。大きなファイルも高速変換。', 'ko': '로컬 엔진 직접 실행 — 네트워크 지연 없음. 대용량 파일도 빠르게 변환.' },
     'why.card3.title': { 'zh-CN': '专业品质', 'zh-HK': '專業品質', 'en': 'Pro Quality', 'ja': 'プロ品質', 'ko': '전문가 품질' },
     'why.card3.desc':  { 'zh-CN': 'Canvas 与 ffmpeg.wasm 驱动，输出质量媲美桌面端专业软件。', 'zh-HK': 'Canvas 與 ffmpeg.wasm 驅動，輸出品質媲美桌面端專業軟件。', 'en': 'Powered by Canvas and ffmpeg.wasm — output quality rivals desktop software.', 'ja': 'Canvasとffmpeg.wasmで駆動 — デスクトップソフトに匹敵する出力品質。', 'ko': 'Canvas 및 ffmpeg.wasm 기반 — 데스크톱 소프트웨어에 필적하는 출력 품질.' },
-    'why.card4.title': { 'zh-CN': '无限制', 'zh-HK': '無限制', 'en': 'No Limits', 'ja': '無制限', 'ko': '무제한' },
-    'why.card4.desc':  { 'zh-CN': '无文件数量限制、无文件大小上限、无水印、无订阅。永久免费。', 'zh-HK': '無檔案數量限制、無檔案大小上限、無水印、無訂閱。永久免費。', 'en': 'No file count limit, no size cap, no watermarks, no subscription. Free forever.', 'ja': 'ファイル数無制限、サイズ上限なし、透かしなし、サブスクリプションなし。永久無料。', 'ko': '파일 수 제한 없음, 크기 제한 없음, 워터마크 없음, 구독 없음. 영구 무료.' },
+    'why.card4.title': { 'zh-CN': '无水印', 'zh-HK': '無水印', 'en': 'No Watermark', 'ja': '透かしなし', 'ko': '워터마크 없음' },
+    'why.card4.desc':  { 'zh-CN': '所有转换输出均不含水印，保持原始纯净画质，无需任何付费解锁。', 'zh-HK': '所有轉換輸出均不含水印，保持原始純淨畫質，無需任何付費解鎖。', 'en': 'All converted output is watermark-free, preserving original quality. No paid unlock needed.', 'ja': 'すべての変換出力に透かしはなく、元の純粋な画質を保持。有料解除は不要。', 'ko': '모든 변환 출력에 워터마크가 없으며, 원본 순수 화질을 유지합니다. 유료 해제 불필요.' },
 
     'footer.privacy': { 'zh-CN': '隐私政策', 'zh-HK': '私隱政策', 'en': 'Privacy Policy', 'ja': 'プライバシーポリシー', 'ko': '개인정보처리방침' },
     'footer.terms':   { 'zh-CN': '服务条款', 'zh-HK': '服務條款', 'en': 'Terms of Service', 'ja': '利用規約', 'ko': '서비스 약관' },
