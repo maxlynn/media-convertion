@@ -136,12 +136,12 @@ footer a:hover { color: var(--accent); }
 
   <div class="contact-row" style="display:flex;flex-wrap:wrap;gap:16px;margin-top:auto">
     <div class="contact-card" style="flex:1;min-width:180px;margin:0">
-      <h3 data-i18n="contact.github.label">🐙 GitHub</h3>
-      <p style="margin-bottom:0"><a href="https://github.com/maxlynn/media-convertion" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-size:0.82rem">github.com/maxlynn/media-convertion</a></p>
+      <h3 data-i18n="contact.email.label">📧 电子邮件</h3>
+      <p style="margin-bottom:0;color:var(--text-muted);font-size:0.82rem">(coming soon)</p>
     </div>
     <div class="contact-card" style="flex:1;min-width:180px;margin:0">
       <h3 data-i18n="contact.feedback.label">🐛 功能建议 / 问题反馈</h3>
-      <p style="margin-bottom:0" data-i18n="contact.feedback.text"></p>
+      <p style="margin-bottom:0" data-i18n="contact.feedback.text">请通过邮件联系我们。</p>
     </div>
     <div class="contact-card" style="flex:1;min-width:180px;margin:0">
       <h3 data-i18n="contact.ads.label">📢 广告合作</h3>
@@ -155,7 +155,6 @@ footer a:hover { color: var(--accent); }
     <a href="privacy.html" data-i18n="footer.privacy">隐私政策</a>
     <a href="terms.html" data-i18n="footer.terms">服务条款</a>
     <a href="about.html" data-i18n="footer.about">联系我们</a>
-    <a href="https://github.com/maxlynn/media-convertion" target="_blank" rel="noopener" data-i18n="footer.github">GitHub</a>
   </div>
   <div style="margin-top:4px" data-i18n="footer.copyright">&copy; 2026 Media Format Conversion. All rights reserved.</div>
 </footer>
@@ -172,9 +171,9 @@ const I18N = {
     'about.p1': { 'zh-CN':'Media Format Conversion 是一个由个人开发者维护的免费在线媒体格式转换工具导航平台。本站汇集了图片、音频、视频三大类格式转换工具，所有转换均在浏览器本地完成，文件不上传任何服务器，充分保护您的隐私。', 'zh-HK':'Media Format Conversion 是一個由個人開發者維護的免費線上媒體格式轉換工具導航平台。本站匯集了圖片、音頻、視頻三大類格式轉換工具，所有轉換均在瀏覽器本地完成，檔案不上載任何伺服器，充分保護您的私隱。', 'en':'Media Format Conversion is a free online media format conversion platform maintained by an individual developer. It brings together image, audio, and video format conversion tools — all processing happens locally in your browser, files are never uploaded to any server, fully protecting your privacy.', 'ja':'Media Format Conversion は個人開発者が運営する無料のオンラインメディア形式変換ツールプラットフォームです。画像・音声・動画の3大形式変換ツールを集約し、すべての変換はブラウザ内でローカルに完了し、ファイルがサーバーにアップロードされることはなく、プライバシーを完全に保護します。', 'ko':'Media Format Conversion는 개인 개발자가 운영하는 무료 온라인 미디어 형식 변환 도구 플랫폼입니다. 이미지, 오디오, 비디오 세 가지 형식 변환 도구를 한곳에 모았으며, 모든 변환은 브라우저에서 로컬로 완료되고 파일이 서버에 업로드되지 않아 개인정보를 완전히 보호합니다.' },
     'about.p2': { 'zh-CN':'核心技术栈包括 <a href="https://github.com/ffmpegwasm/ffmpeg.wasm">ffmpeg.wasm</a>（浏览器端 WebAssembly 音视频转码引擎，MIT 许可）和 Canvas API（图片处理），无需任何后端服务器支持，真正做到「断网也能用」。ffmpeg.wasm 内置的 FFmpeg 引擎版权所有 © FFmpeg 贡献者，遵循 LGPL/GPL 许可协议。支持简体中文、繁體中文、English、日本語、한국어 五种界面语言。', 'zh-HK':'核心技術棧包括 <a href="https://github.com/ffmpegwasm/ffmpeg.wasm">ffmpeg.wasm</a>（瀏覽器端 WebAssembly 音視頻轉碼引擎，MIT 許可）和 Canvas API（圖片處理），無需任何後端伺服器支援，真正做到「斷網也能用」。ffmpeg.wasm 內置的 FFmpeg 引擎版權所有 © FFmpeg 貢獻者，遵循 LGPL/GPL 許可協議。支援簡體中文、繁體中文、English、日本語、한국어 五種界面語言。', 'en':'Core tech stack includes <a href="https://github.com/ffmpegwasm/ffmpeg.wasm">ffmpeg.wasm</a> (browser-based WebAssembly audio/video transcoding engine, MIT license) and Canvas API (image processing), requiring no backend server — truly works offline after engine load. The built-in FFmpeg engine is Copyright © FFmpeg contributors, licensed under LGPL/GPL. Supports 5 interface languages: 简体中文, 繁體中文, English, 日本語, 한국어.', 'ja':'コア技術スタックは <a href="https://github.com/ffmpegwasm/ffmpeg.wasm">ffmpeg.wasm</a>（ブラウザベースのWebAssembly音声・動画トランスコーディングエンジン、MITライセンス）とCanvas API（画像処理）で構成され、バックエンドサーバーは一切不要。内蔵の FFmpeg エンジンの著作権は © FFmpeg コントリビューターに帰属し、LGPL/GPL ライセンスの下で提供されています。5つのインターフェース言語（简体中文、繁體中文、English、日本語、한국어）に対応しています。', 'ko':'핵심 기술 스택은 <a href="https://github.com/ffmpegwasm/ffmpeg.wasm">ffmpeg.wasm</a>(브라우저 기반 WebAssembly 오디오/비디오 트랜스코딩 엔진, MIT 라이선스)과 Canvas API(이미지 처리)로 구성되어 있으며, 백엔드 서버가 전혀 필요하지 않아 엔진 로드 후 오프라인에서도 사용할 수 있습니다. 내장된 FFmpeg 엔진의 저작권은 © FFmpeg 기여자에게 있으며, LGPL/GPL 라이선스를 따릅니다. 5가지 인터페이스 언어(简体中文, 繁體中文, English, 日本語, 한국어)를 지원합니다.' },
     'about.p3': { 'zh-CN':'本站通过 Google AdSense 展示广告以维持运营。所有功能永久免费，无需注册，无水印，不限使用次数。如果您有任何问题或建议，欢迎通过下方联系方式与我们取得联系。', 'zh-HK':'本站通過 Google AdSense 展示廣告以維持運營。所有功能永久免費，無需註冊，無水印，不限使用次數。如果您有任何問題或建議，歡迎通過下方聯絡方式與我們取得聯繫。', 'en':'This site uses Google AdSense to display ads for operational support. All features are permanently free, no registration, no watermarks, no usage limits. If you have any questions or suggestions, feel free to reach out via the contact methods below.', 'ja':'当サイトは Google AdSense による広告掲載で運営しています。すべての機能は完全無料、登録不要、透かしなし、使用回数制限なし。ご質問やご提案がございましたら、下記のお問い合わせ先までお気軽にご連絡ください。', 'ko':'본 사이트는 Google AdSense를 통해 광고를 게재하여 운영됩니다. 모든 기능은 영구적으로 무료이며, 등록 불필요, 워터마크 없음, 사용 횟수 제한 없음. 질문이나 제안 사항이 있으시면 아래 연락처를 통해 언제든지 문의해 주세요.' },
-    'contact.github.label':  { 'zh-CN':'🐙 开源代码', 'zh-HK':'🐙 開源程式碼', 'en':'🐙 Open Source', 'ja':'🐙 ソースコード', 'ko':'🐙 오픈소스' },
+    'contact.email.label':   { 'zh-CN':'📧 联系方式', 'zh-HK':'📧 聯絡方式', 'en':'📧 Contact', 'ja':'📧 連絡先', 'ko':'📧 연락처' },
     'contact.feedback.label':{ 'zh-CN':'🐛 功能建议 / 问题反馈', 'zh-HK':'🐛 功能建議 / 問題反饋', 'en':'🐛 Feedback / Bug Report', 'ja':'🐛 フィードバック / バグ報告', 'ko':'🐛 피드백 / 버그 신고' },
-    'contact.feedback.text': { 'zh-CN':'欢迎在 GitHub 提交 Issue 反馈问题或建议。', 'zh-HK':'歡迎在 GitHub 提交 Issue 反映問題或建議。', 'en':'Welcome to submit an Issue on GitHub for feedback or suggestions.', 'ja':'GitHub で Issue を送信してフィードバックや提案をお寄せください。', 'ko':'GitHub에서 Issue를 제출하여 피드백이나 제안을 보내주세요.' },
+    'contact.feedback.text': { 'zh-CN':'请通过邮件联系我们，并在标题中注明 [反馈] 或 [问题]。如果您有功能建议，请详细描述使用场景。', 'zh-HK':'請通過電郵聯絡我們，並在標題中註明 [反饋] 或 [問題]。如果您有功能建議，請詳細描述使用場景。', 'en':'Please email us with [Feedback] or [Bug] in the subject line. For feature suggestions, please describe your use case in detail.', 'ja':'件名に [フィードバック] または [バグ] と明記してメールでご連絡ください。機能提案の場合は、ユースケースを詳しく説明してください。', 'ko':'제목에 [피드백] 또는 [버그]를 명시하여 이메일로 연락해 주세요. 기능 제안의 경우 사용 사례를 자세히 설명해 주세요.' },
     'contact.ads.label':     { 'zh-CN':'📢 广告合作', 'zh-HK':'📢 廣告合作', 'en':'📢 Advertising Inquiries', 'ja':'📢 広告に関するお問い合わせ', 'ko':'📢 광고 문의' },
     'contact.ads.text':      { 'zh-CN':'我们欢迎广告合作意向。请通过邮件联系我们，标题注明 [广告合作]，我们会尽快回复。', 'zh-HK':'我們歡迎廣告合作意向。請通過電郵聯絡我們，標題註明 [廣告合作]，我們會盡快回覆。', 'en':'We welcome advertising partnership inquiries. Please email us with [Advertising] in the subject line, and we\'ll get back to you promptly.', 'ja':'広告提携のお問い合わせを歓迎します。件名に [広告] と明記してメールでご連絡ください。迅速に対応いたします。', 'ko':'광고 제휴 문의를 환영합니다. 제목에 [광고]를 명시하여 이메일로 연락해 주시면 신속히 답변 드리겠습니다.' },
     'contact.faq':    { 'zh-CN':'常见问题', 'zh-HK':'常見問題', 'en':'FAQ', 'ja':'よくある質問', 'ko':'자주 묻는 질문' },
@@ -189,7 +188,6 @@ const I18N = {
     'footer.privacy': { 'zh-CN':'隐私政策','zh-HK':'私隱政策','en':'Privacy Policy','ja':'プライバシーポリシー','ko':'개인정보처리방침' },
     'footer.terms':   { 'zh-CN':'服务条款','zh-HK':'服務條款','en':'Terms of Service','ja':'利用規約','ko':'서비스 약관' },
     'footer.about':   { 'zh-CN':'联系我们','zh-HK':'聯絡我們','en':'Contact Us','ja':'お問い合わせ','ko':'문의하기' },
-    'footer.github':  { 'zh-CN':'GitHub','zh-HK':'GitHub','en':'GitHub','ja':'GitHub','ko':'GitHub' },
     'footer.copyright': { 'zh-CN':'&copy; 2026 Media Format Conversion. All rights reserved.','zh-HK':'&copy; 2026 Media Format Conversion. All rights reserved.','en':'&copy; 2026 Media Format Conversion. All rights reserved.','ja':'&copy; 2026 Media Format Conversion. All rights reserved.','ko':'&copy; 2026 Media Format Conversion. All rights reserved.' },
     'theme.dark_hint':  { 'zh-CN':'点击切换为白天模式','zh-HK':'點擊切換為白天模式','en':'Switch to light mode','ja':'ライトモードに切替','ko':'라이트 모드로 전환' },
     'theme.light_hint': { 'zh-CN':'点击切换为夜间模式','zh-HK':'點擊切換為夜間模式','en':'Switch to dark mode','ja':'ダークモードに切替','ko':'다크 모드로 전환' },

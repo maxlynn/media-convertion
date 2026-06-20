@@ -71,7 +71,6 @@ const I18N = {
     'footer.terms':   { 'zh-CN':'服务条款', 'zh-HK':'服務條款', 'en':'Terms of Service','ja':'利用規約',         'ko':'서비스 약관' },
     'footer.contact': { 'zh-CN':'联系我们', 'zh-HK':'聯絡我們', 'en':'Contact Us',      'ja':'お問い合わせ',     'ko':'문의하기' },
     'footer.about':   { 'zh-CN':'联系我们', 'zh-HK':'聯絡我們', 'en':'Contact Us',      'ja':'お問い合わせ',     'ko':'문의하기' },
-    'footer.github':  { 'zh-CN':'GitHub', 'zh-HK':'GitHub', 'en':'GitHub', 'ja':'GitHub', 'ko':'GitHub' },
     'footer.tagline': { 'zh-CN':'所有处理均在浏览器本地完成，文件不会上传到任何服务器', 'zh-HK':'所有處理均在瀏覽器本機完成，檔案不會上載到任何伺服器', 'en':'All processing happens locally in your browser — files are never uploaded', 'ja':'すべての処理はブラウザ内で完結し、ファイルがサーバーにアップロードされることはありません', 'ko':'모든 처리는 브라우저에서 로컬로 수행되며 파일은 서버에 업로드되지 않습니다' },
     'footer.copyright':{ en:'© 2026 Image format conversion. All rights reserved.', 'zh-CN':'© 2026 Image format conversion. All rights reserved.', 'zh-HK':'© 2026 Image format conversion. All rights reserved.', 'ja':'© 2026 Image format conversion. All rights reserved.', 'ko':'© 2026 Image format conversion. All rights reserved.' },
 
