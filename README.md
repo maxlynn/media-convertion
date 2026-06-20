@@ -25,4 +25,14 @@
 
 ## License
 
-MIT
+MIT © 2026 Media Format Conversion Contributors
+
+## Third-Party Dependencies
+
+本项目的静态页面代码基于 MIT 许可证发布，通过 CDN 在运行时加载以下库（不包含其源代码或二进制文件）：
+
+| 库 | 许可证 | 版权 |
+|---|---|---|
+| [ffmpeg.wasm](https://github.com/ffmpegwasm/ffmpeg.wasm) | MIT | © 2023 ffmpeg.wasm contributors |
+| [FFmpeg](https://ffmpeg.org)（内置于 ffmpeg.wasm） | LGPL/GPL | © FFmpeg contributors |
+| [JSZip](https://stuk.github.io/jszip/) | MIT | © 2009-2023 Stuart Knightley
