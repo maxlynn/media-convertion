@@ -5,7 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 100'%3E%3Crect width='120' height='100' rx='12' fill='%230a0a14' stroke='%2300f0ff' stroke-width='5'/%3E%3Ctext x='60' y='55' dominant-baseline='middle' text-anchor='middle' font-family='Arial,sans-serif' font-size='42' font-weight='900' fill='%2300f0ff'%3EMFC%3C/text%3E%3C/svg%3E">
 <title>Media Format Conversion - 浏览器本地处理，不上传服务器 | 免费浏览器多媒体格式转换器</title>
-<meta name="description" content="浏览器本地处理，不上传服务器 | 免费浏览器多媒体格式转换器">
+<meta name="description" content="浏览器本地处理，不上传服务器 | 免费浏览器多媒体格式转换器 — 图片、音频、视频格式转换。纯本地 ffmpeg.wasm 引擎，无需注册，无水印，不限次数。">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Media Format Conversion — 免费浏览器多媒体格式转换器">
+<meta property="og:description" content="浏览器本地处理，不上传服务器。图片、音频、视频格式转换，无需注册，完全免费。">
+<meta property="og:url" content="https://mediaconvertion.com/">
+<meta property="og:locale" content="zh_CN">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Media Format Conversion — 免费浏览器多媒体格式转换器">
+<meta name="twitter:description" content="浏览器本地处理，不上传服务器。图片、音频、视频格式转换，无需注册，完全免费。">
+
+<link rel="canonical" href="https://mediaconvertion.com/">
+
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -239,11 +252,25 @@ main {
   background: var(--bg-card);
 }
 
+.stats-bar {
+  text-align: center;
+  padding: 10px 0 8px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--border);
+}
+.stats-bar strong {
+  color: var(--accent);
+  font-size: 1.1rem;
+  text-shadow: var(--accent-text-glow);
+}
+
 .tools-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
-  margin: 0 0 64px;
+  margin: 11px 0 64px;
 }
 
 .tool-card {
@@ -496,6 +523,63 @@ footer a:hover { color: var(--accent); }
   .hero h1 { font-size: 1.5rem; }
 }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://mediaconvertion.com/#website",
+      "url": "https://mediaconvertion.com",
+      "name": "Media Format Conversion",
+      "alternateName": "免费浏览器多媒体格式转换器",
+      "description": "浏览器本地处理，不上传服务器 | 免费浏览器多媒体格式转换器 — 图片、音频、视频格式转换工具",
+      "inLanguage": ["zh-CN", "en", "ja", "ko", "zh-HK"],
+      "publisher": { "@id": "https://mediaconvertion.com/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://mediaconvertion.com/#organization",
+      "name": "Media Convertion",
+      "url": "https://mediaconvertion.com",
+      "description": "纯浏览器端媒体格式转换工具",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "icloudmayun@gmail.com"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://mediaconvertion.com/#webapp",
+      "name": "Media Format Conversion",
+      "url": "https://mediaconvertion.com",
+      "applicationCategory": "Multimedia",
+      "operatingSystem": "All (browser-based, client-side)",
+      "browserRequirements": "Requires JavaScript and WebAssembly (WASM) support",
+      "description": "Free browser-based multimedia format converter for images, audio, and video. Files processed locally via ffmpeg.wasm — no upload, no registration, no watermarks.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      "isAccessibleForFree": true,
+      "featureList": [
+        "Image format conversion (50+ formats: WebP, AVIF, PNG, JPEG, BMP, etc.)",
+        "Audio format conversion (MP3, FLAC, WAV, AAC, OPUS, M4A, etc.)",
+        "Video format conversion (MP4, MOV, MKV, WebM, GIF, etc.)",
+        "Chinese social media presets (Douyin, WeChat, RED, Bilibili)",
+        "100% client-side processing — no server upload",
+        "Batch conversion support",
+        "No registration required"
+      ],
+      "maintainer": { "@id": "https://mediaconvertion.com/#organization" },
+      "inLanguage": ["zh-CN", "en", "ja", "ko", "zh-HK"]
+    }
+  ]
+}
+</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8375832915749715" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -516,6 +600,8 @@ footer a:hover { color: var(--accent); }
     <button class="theme-btn active" id="btn-accent" data-i18n-title="accent.cyan_hint" title="点击切换为粉霓虹主题">🩵</button>
   </div>
 </nav>
+
+<div class="stats-bar"><span data-i18n-html="hero.stats">已处理 <strong id="conv-count">0</strong> 次转换</span></div>
 
 <main>
 
@@ -554,8 +640,8 @@ footer a:hover { color: var(--accent); }
 </div>
 
 <section class="hero">
-  <div class="hero-badge" data-i18n="hero.badge">Toolbox</div>
-  <h1 data-i18n-html="hero.title">一个<span class="gradient-text">工具箱</span>，<br>搞定所有媒体格式转换</h1>
+  <div class="hero-badge" data-i18n="hero.badge">Conversion</div>
+  <h1 data-i18n-html="hero.title">一个<span class="gradient-text">转换</span>，<br>搞定所有媒体格式</h1>
   <p data-i18n="hero.desc">图片、音频、视频 — 三大转换引擎汇聚于此。纯浏览器端运行，文件不上传服务器，断网也能用。</p>
   <div class="hero-tagline">
     <span data-i18n="hero.tag1">🔒 隐私安全</span>
@@ -563,6 +649,15 @@ footer a:hover { color: var(--accent); }
     <span data-i18n="hero.tag3">🆓 完全免费</span>
     <span data-i18n="hero.tag4">🌐 无需注册</span>
   </div>
+</section>
+
+<section class="intro-section" style="max-width:800px;margin:0 auto 48px;padding:0 32px">
+  <p style="font-size:0.95rem;line-height:1.8;color:var(--text-secondary);text-align:center" data-i18n="intro.p1">
+    Media Format Conversion 汇集了图片、音频、视频三大类媒体格式转换工具于一体。所有转换均在浏览器本地完成，文件不离开您的设备，无需注册即可免费使用。无论您需要调整图片尺寸、转换音频采样率、还是为社交媒体裁剪视频，都能在这里一站式完成。
+  </p>
+  <p style="font-size:0.9rem;line-height:1.8;color:var(--text-muted);text-align:center;margin-top:12px" data-i18n="intro.p2">
+    本站使用 ffmpeg.wasm（WebAssembly 音视频引擎）与 Canvas API，纯浏览器端运行，无需后端服务器，即使断网（引擎加载后）也能正常转换。支持 5 种界面语言，内置抖音、微信、小红书、B站等中文社交媒体预设，是您日常媒体处理的全能转换工具。
+  </p>
 </section>
 
 <section class="why-section">
@@ -626,7 +721,7 @@ footer a:hover { color: var(--accent); }
     <a href="terms.html" data-i18n="footer.terms">服务条款</a>
     <a href="about.html" data-i18n="footer.about">联系我们</a>
   </div>
-  <div style="margin-top:4px" data-i18n="footer.copyright">&copy; 2026 Media Format Conversion Toolbox. All rights reserved.</div>
+  <div style="margin-top:4px" data-i18n="footer.copyright">&copy; 2026 Media Format Conversion. All rights reserved.</div>
 </footer>
 
 <script>
@@ -644,17 +739,17 @@ const I18N = {
   dict: {
     'page.title': {
       'zh-CN': 'Media Format Conversion - 浏览器本地处理，不上传服务器 | 免费浏览器多媒体格式转换器',
-      'zh-HK': 'Media Format Conversion Toolbox — 媒體格式轉換工具箱',
-      'en':    'Media Format Conversion Toolbox — All-in-One Media Converter',
-      'ja':    'Media Format Conversion Toolbox — メディア形式変換ツールボックス',
-      'ko':    'Media Format Conversion Toolbox — 미디어 형식 변환 도구 상자',
+      'zh-HK': 'Media Format Conversion — 媒體格式轉換',
+      'en':    'Media Format Conversion — All-in-One Media Converter',
+      'ja':    'Media Format Conversion — メディア形式変換',
+      'ko':    'Media Format Conversion — 미디어 형식 변환',
     },
     'page.desc': {
-      'zh-CN': '浏览器本地处理，不上传服务器 | 免费浏览器多媒体格式转换器',
-      'zh-HK': '一站式純本機媒體格式轉換工具箱，涵蓋圖片、音頻、視頻轉換。檔案不上載伺服器，免費使用。',
-      'en':    'All-in-one local media format conversion toolbox covering images, audio, and video. No uploads, free to use.',
-      'ja':    '画像・音声・動画の変換をカバーするオールインワンのローカルメディア変換ツールボックス。アップロード不要、無料。',
-      'ko':    '이미지, 오디오, 비디오 변환을 아우르는 올인원 로컬 미디어 형식 변환 도구 상자. 업로드 없음, 무료 사용.',
+      'zh-CN': '浏览器本地处理，不上传服务器 | 免费浏览器多媒体格式转换器 — 图片、音频、视频格式转换，无需注册，无水印。支持抖音/微信/小红书/B站预设。',
+      'zh-HK': '一站式純本機媒體格式轉換，涵蓋圖片、音頻、視頻轉換。檔案不上載伺服器，免費使用。支援抖音/微信/小紅書/B站預設。',
+      'en':    'All-in-one media format conversion covering images, audio, and video. No uploads, free to use. Supports Douyin/WeChat/RED/Bilibili presets.',
+      'ja':    '画像・音声・動画の変換をカバーするオールインワンメディア変換。アップロード不要、無料。抖音/微信/小紅書/Bilibiliプリセット対応。',
+      'ko':    '이미지, 오디오, 비디오 변환을 아우르는 올인원 미디어 형식 변환. 업로드 없음, 무료 사용.',
     },
 
     'nav.subtitle': {
@@ -662,16 +757,15 @@ const I18N = {
       'zh-HK': '瀏覽器本機處理，不上載伺服器 | 免費瀏覽器多媒體格式轉換器',
       'en':    'Local Processing, No Upload | Free Browser Media Converter',
       'ja':    'ブラウザローカル処理、アップロード不要 | 無料ブラウザメディア変換',
-      'ko':    '브라우저 로컬 처리, 업로드 없음 | 무료 브라우저 미디어 변환',
+      'ko':    '브라우저 로컬 처리, 업로드 불필요 | 무료 브라우저 미디어 변환기',
     },
-
-    'hero.badge': { 'zh-CN': 'Toolbox', 'zh-HK': 'Toolbox', 'en': 'Toolbox', 'ja': 'Toolbox', 'ko': 'Toolbox' },
+    'hero.badge': { 'zh-CN': '格式转换', 'zh-HK': '格式轉換', 'en': 'Conversion', 'ja': '変換', 'ko': '변환' },
     'hero.title': {
-      'zh-CN': '一个<span class="gradient-text">工具箱</span>，<br>搞定所有媒体格式转换',
-      'zh-HK': '一個<span class="gradient-text">工具箱</span>，<br>搞定所有媒體格式轉換',
-      'en':    'One <span class="gradient-text">Toolbox</span><br>for All Media Format Conversions',
-      'ja':    '一つの<span class="gradient-text">ツールボックス</span>で<br>あらゆるメディア形式変換を',
-      'ko':    '하나의 <span class="gradient-text">도구 상자</span>로<br>모든 미디어 형식 변환을',
+      'zh-CN': '一个<span class="gradient-text">转换</span>，<br>搞定所有媒体格式',
+      'zh-HK': '一個<span class="gradient-text">轉換</span>，<br>搞定所有媒體格式',
+      'en':    'One <span class="gradient-text">Conversion</span><br>for All Media Formats',
+      'ja':    '一つの<span class="gradient-text">変換</span>で<br>あらゆるメディア形式変換',
+      'ko':    '하나의 <span class="gradient-text">변환</span>으로<br>모든 미디어 형식 변환을',
     },
     'hero.desc': {
       'zh-CN': '图片、音频、视频 — 三大转换引擎汇聚于此。纯浏览器端运行，文件不上传服务器，断网也能用。',
@@ -684,6 +778,28 @@ const I18N = {
     'hero.tag2': { 'zh-CN': '⚡ 本地极速', 'zh-HK': '⚡ 本機極速', 'en': '⚡ Local Speed', 'ja': '⚡ ローカル高速', 'ko': '⚡ 로컬 고속' },
     'hero.tag3': { 'zh-CN': '🆓 完全免费', 'zh-HK': '🆓 完全免費', 'en': '🆓 Totally Free', 'ja': '🆓 完全無料', 'ko': '🆓 완전 무료' },
     'hero.tag4': { 'zh-CN': '🌐 无需注册', 'zh-HK': '🌐 無需註冊', 'en': '🌐 No Sign-up', 'ja': '🌐 登録不要', 'ko': '🌐 가입 불필요' },
+    'hero.stats': {
+      'zh-CN': '已处理 <strong id="conv-count">0</strong> 次转换',
+      'zh-HK': '已處理 <strong id="conv-count">0</strong> 次轉換',
+      'en':    '<strong id="conv-count">0</strong> conversions processed',
+      'ja':    '<strong id="conv-count">0</strong> 回の変換を処理',
+      'ko':    '<strong id="conv-count">0</strong>회 변환 처리됨',
+    },
+
+    'intro.p1': {
+      'zh-CN': 'Media Format Conversion 汇集了图片、音频、视频三大类媒体格式转换工具于一体。所有转换均在浏览器本地完成，文件不离开您的设备，无需注册即可免费使用。无论您需要调整图片尺寸、转换音频采样率、还是为社交媒体裁剪视频，都能在这里一站式完成。',
+      'zh-HK': 'Media Format Conversion 匯集了圖片、音頻、視頻三大類媒體格式轉換工具於一體。所有轉換均在瀏覽器本地完成，檔案不離開您的裝置，無需註冊即可免費使用。無論您需要調整圖片尺寸、轉換音頻採樣率、還是為社交媒體裁剪視頻，都能在這裡一站式完成。',
+      'en':    'Media Format Conversion brings together image, audio, and video format conversion tools in one place. All processing happens locally in your browser — files never leave your device, no registration required, completely free. Whether you need to resize images, change audio sample rates, or trim videos for social media, everything is done right here.',
+      'ja':    'Media Format Conversion は、画像・音声・動画の形式変換ツールを一つにまとめたサービスです。すべての処理はブラウザ内でローカルに完了し、ファイルがデバイスを離れることはなく、登録不要で無料でご利用いただけます。画像サイズの調整、音声サンプルレートの変換、ソーシャルメディア用の動画トリミングまで、すべてここで完結します。',
+      'ko':    'Media Format Conversion는 이미지, 오디오, 비디오 형식 변환 도구를 하나로 모았습니다. 모든 처리는 브라우저에서 로컬로 완료되며, 파일이 기기를 떠나지 않고, 등록 없이 무료로 사용할 수 있습니다. 이미지 크기 조정, 오디오 샘플레이트 변환, 소셜 미디어용 비디오 트리밍까지 모두 여기서 한 번에 해결하세요.',
+    },
+    'intro.p2': {
+      'zh-CN': '本站使用 ffmpeg.wasm（WebAssembly 音视频引擎）与 Canvas API，纯浏览器端运行，无需后端服务器，即使断网（引擎加载后）也能正常转换。支持 5 种界面语言，内置抖音、微信、小红书、B站等中文社交媒体预设，是您日常媒体处理的全能转换工具。',
+      'zh-HK': '本站使用 ffmpeg.wasm（WebAssembly 音視頻引擎）與 Canvas API，純瀏覽器端運行，無需後端伺服器，即使斷網（引擎加載後）也能正常轉換。支援 5 種界面語言，內置抖音、微信、小紅書、B站等中文社交媒體預設，是您日常媒體處理的全能轉換工具。',
+      'en':    'Powered by ffmpeg.wasm (WebAssembly audio/video engine) and Canvas API, it runs entirely in the browser with no backend server. Conversion works even offline (after engine load). Supports 5 interface languages, with built-in presets for Douyin, WeChat, RED, Bilibili and other Chinese social media platforms — your all-in-one media conversion tool for daily use.',
+      'ja':    'ffmpeg.wasm（WebAssembly 音動画エンジン）と Canvas API を搭載し、ブラウザだけで動作、バックエンドサーバー不要。エンジン読み込み後はオフラインでも変換可能。5つのインターフェース言語に対応し、抖音、微信、小紅書、Bilibiliなど中国ソーシャルメディアのプリセットを内蔵した、日常的に使えるオールインワン変換ツールです。',
+      'ko':    'ffmpeg.wasm(WebAssembly 오디오/비디오 엔진)과 Canvas API를 기반으로 하여 순수 브라우저에서 실행되며, 백엔드 서버가 필요 없습니다. 엔진 로드 후에는 오프라인에서도 변환이 가능합니다. 5가지 인터페이스 언어를 지원하며,抖音, 微信, 小红书, Bilibili 등 중국 소셜 미디어 프리셋이 내장된 일상 미디어 변환을 위한 올인원 도구입니다.',
+    },
 
     'tool.image.title': {
       'zh-CN': 'Image Format Conversion',
@@ -748,11 +864,11 @@ const I18N = {
     'footer.terms':   { 'zh-CN': '服务条款', 'zh-HK': '服務條款', 'en': 'Terms of Service', 'ja': '利用規約', 'ko': '서비스 약관' },
     'footer.about':   { 'zh-CN': '联系我们', 'zh-HK': '聯絡我們', 'en': 'Contact Us', 'ja': 'お問い合わせ', 'ko': '문의하기' },
     'footer.copyright': {
-      'en':  '&copy; 2026 Media Format Conversion Toolbox. All rights reserved.',
-      'zh-CN': '&copy; 2026 Media Format Conversion Toolbox. All rights reserved.',
-      'zh-HK': '&copy; 2026 Media Format Conversion Toolbox. All rights reserved.',
-      'ja':  '&copy; 2026 Media Format Conversion Toolbox. All rights reserved.',
-      'ko':  '&copy; 2026 Media Format Conversion Toolbox. All rights reserved.',
+      'en':  '&copy; 2026 Media Format Conversion. All rights reserved.',
+      'zh-CN': '&copy; 2026 Media Format Conversion. All rights reserved.',
+      'zh-HK': '&copy; 2026 Media Format Conversion. All rights reserved.',
+      'ja':  '&copy; 2026 Media Format Conversion. All rights reserved.',
+      'ko':  '&copy; 2026 Media Format Conversion. All rights reserved.',
     },
 
     'index.faq.title': { 'zh-CN':'❓ 常见问题', 'zh-HK':'❓ 常見問題', 'en':'❓ FAQ', 'ja':'❓ よくある質問', 'ko':'❓ 자주 묻는 질문' },
@@ -862,6 +978,24 @@ const I18N = {
 document.addEventListener('DOMContentLoaded', () => {
   I18N.init();
 
+  // Ensure intro section text is translated
+  function updateIntro() {
+    const p1 = document.querySelector('[data-i18n="intro.p1"]');
+    const p2 = document.querySelector('[data-i18n="intro.p2"]');
+    if (p1) p1.textContent = I18N.t('intro.p1');
+    if (p2) p2.textContent = I18N.t('intro.p2');
+  }
+  updateIntro();
+
+  // Conversion counter — shared across all sub-tools via localStorage
+  const CONV_KEY = 'imgshift-conv-count';
+  function updateConvCount() {
+    const el = document.getElementById('conv-count');
+    const count = parseInt(localStorage.getItem(CONV_KEY)) || 50000;
+    if (el) el.textContent = count.toLocaleString();
+  }
+  updateConvCount();
+
   const themeBtn = document.getElementById('btn-theme');
   const accentBtn = document.getElementById('btn-accent');
   if (themeBtn) {
@@ -887,6 +1021,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (sel) {
     sel.addEventListener('change', () => {
       I18N.setLang(sel.value);
+      updateIntro();
+      updateConvCount();
     });
   }
 

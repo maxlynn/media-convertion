@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 100'%3E%3Crect width='120' height='100' rx='12' fill='%230a0a14' stroke='%2300f0ff' stroke-width='5'/%3E%3Ctext x='60' y='55' dominant-baseline='middle' text-anchor='middle' font-family='Arial,sans-serif' font-size='42' font-weight='900' fill='%2300f0ff'%3EMFC%3C/text%3E%3C/svg%3E">
-<title>联系我们 — Media Format Conversion Toolbox</title>
+<title>联系我们 — Media Format Conversion</title>
 <meta name="robots" content="noindex">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -113,6 +113,19 @@ footer a:hover { color: var(--accent); }
   <h1 data-i18n="contact.h1">联系我们</h1>
   <p data-i18n="contact.intro" style="margin-bottom:20px">我们乐意听取您的意见！</p>
 
+  <div style="background:var(--bg-card);border:1px solid var(--border);padding:24px;margin-bottom:24px;clip-path:var(--clip-angle)">
+    <h2 style="font-size:0.95rem;color:var(--accent);margin-bottom:12px" data-i18n="about.title">关于本站</h2>
+    <p style="font-size:0.88rem;line-height:1.7;margin-bottom:10px;color:var(--text-primary)" data-i18n="about.p1">
+      Media Format Conversion 是一个由个人开发者维护的免费在线媒体格式转换工具导航平台。本站汇集了图片、音频、视频三大类格式转换工具，所有转换均在浏览器本地完成，文件不上传任何服务器，充分保护您的隐私。
+    </p>
+    <p style="font-size:0.88rem;line-height:1.7;margin-bottom:10px;color:var(--text-primary)" data-i18n="about.p2">
+      核心技术栈包括 ffmpeg.wasm（浏览器端 WebAssembly 音视频转码引擎）和 Canvas API（图片处理），无需任何后端服务器支持，真正做到「断网也能用」。支持简体中文、繁體中文、English、日本語、한국어 五种界面语言。
+    </p>
+    <p style="font-size:0.88rem;line-height:1.7;color:var(--text-primary)" data-i18n="about.p3">
+      本站通过 Google AdSense 展示广告以维持运营。所有功能永久免费，无需注册，无水印，不限使用次数。如果您有任何问题或建议，欢迎通过下方联系方式与我们取得联系。
+    </p>
+  </div>
+
   <h2 data-i18n="contact.faq">常见问题</h2>
   <ul>
     <li><strong data-i18n="contact.faq1.q">文件会上传到服务器吗？</strong> <span data-i18n="contact.faq1.a">不会。所有转换均在您的浏览器本地完成。</span></li>
@@ -144,7 +157,7 @@ footer a:hover { color: var(--accent); }
     <a href="terms.html" data-i18n="footer.terms">服务条款</a>
     <a href="about.html" data-i18n="footer.about">联系我们</a>
   </div>
-  <div style="margin-top:4px" data-i18n="footer.copyright">&copy; 2026 Media Format Conversion Toolbox. All rights reserved.</div>
+  <div style="margin-top:4px" data-i18n="footer.copyright">&copy; 2026 Media Format Conversion. All rights reserved.</div>
 </footer>
 
 <script>
@@ -152,9 +165,13 @@ const I18N = {
   current: 'zh-CN',
   supported: [{code:'en',label:'English'},{code:'ja',label:'日本語'},{code:'ko',label:'한국어'},{code:'zh-CN',label:'简体中文'},{code:'zh-HK',label:'繁體中文'}],
   dict: {
-    'page.title.about': { 'zh-CN':'联系我们 — Media Format Conversion Toolbox', 'zh-HK':'聯絡我們 — Media Format Conversion Toolbox', 'en':'Contact Us — Media Format Conversion Toolbox', 'ja':'お問い合わせ — Media Format Conversion Toolbox', 'ko':'문의하기 — Media Format Conversion Toolbox' },
+    'page.title.about': { 'zh-CN':'联系我们 — Media Format Conversion', 'zh-HK':'聯絡我們 — Media Format Conversion', 'en':'Contact Us — Media Format Conversion', 'ja':'お問い合わせ — Media Format Conversion', 'ko':'문의하기 — Media Format Conversion' },
     'contact.h1':    { 'zh-CN':'联系我们', 'zh-HK':'聯絡我們', 'en':'Contact Us', 'ja':'お問い合わせ', 'ko':'문의하기' },
     'contact.intro': { 'zh-CN':'我们乐意听取您的意见！无论您有功能建议、错误报告还是广告合作意向，都可以通过以下方式联系我们。', 'zh-HK':'我們樂意聽取您的意見！無論您有功能建議、錯誤報告還是廣告合作意向，都可以通過以下方式聯絡我們。', 'en':'We\'d love to hear from you! Whether you have feature suggestions, bug reports, or advertising inquiries, feel free to reach out.', 'ja':'ご意見をお待ちしております！機能提案、バグ報告、広告に関するお問い合わせなど、お気軽にご連絡ください。', 'ko':'의견을 기다립니다! 기능 제안, 버그 신고, 광고 문의 등 언제든지 연락해 주세요.' },
+    'about.title': { 'zh-CN':'关于本站', 'zh-HK':'關於本站', 'en':'About This Site', 'ja':'当サイトについて', 'ko':'사이트 소개' },
+    'about.p1': { 'zh-CN':'Media Format Conversion 是一个由个人开发者维护的免费在线媒体格式转换工具导航平台。本站汇集了图片、音频、视频三大类格式转换工具，所有转换均在浏览器本地完成，文件不上传任何服务器，充分保护您的隐私。', 'zh-HK':'Media Format Conversion 是一個由個人開發者維護的免費線上媒體格式轉換工具導航平台。本站匯集了圖片、音頻、視頻三大類格式轉換工具，所有轉換均在瀏覽器本地完成，檔案不上載任何伺服器，充分保護您的私隱。', 'en':'Media Format Conversion is a free online media format conversion platform maintained by an individual developer. It brings together image, audio, and video format conversion tools — all processing happens locally in your browser, files are never uploaded to any server, fully protecting your privacy.', 'ja':'Media Format Conversion は個人開発者が運営する無料のオンラインメディア形式変換ツールプラットフォームです。画像・音声・動画の3大形式変換ツールを集約し、すべての変換はブラウザ内でローカルに完了し、ファイルがサーバーにアップロードされることはなく、プライバシーを完全に保護します。', 'ko':'Media Format Conversion는 개인 개발자가 운영하는 무료 온라인 미디어 형식 변환 도구 플랫폼입니다. 이미지, 오디오, 비디오 세 가지 형식 변환 도구를 한곳에 모았으며, 모든 변환은 브라우저에서 로컬로 완료되고 파일이 서버에 업로드되지 않아 개인정보를 완전히 보호합니다.' },
+    'about.p2': { 'zh-CN':'核心技术栈包括 ffmpeg.wasm（浏览器端 WebAssembly 音视频转码引擎）和 Canvas API（图片处理），无需任何后端服务器支持，真正做到「断网也能用」。支持简体中文、繁體中文、English、日本語、한국어 五种界面语言。', 'zh-HK':'核心技術棧包括 ffmpeg.wasm（瀏覽器端 WebAssembly 音視頻轉碼引擎）和 Canvas API（圖片處理），無需任何後端伺服器支援，真正做到「斷網也能用」。支援簡體中文、繁體中文、English、日本語、한국어 五種界面語言。', 'en':'Core tech stack includes ffmpeg.wasm (browser-based WebAssembly audio/video transcoding engine) and Canvas API (image processing), requiring no backend server — truly works offline after engine load. Supports 5 interface languages: 简体中文, 繁體中文, English, 日本語, 한국어.', 'ja':'コア技術スタックは ffmpeg.wasm（ブラウザベースのWebAssembly音声・動画トランスコーディングエンジン）とCanvas API（画像処理）で構成され、バックエンドサーバーは一切不要。エンジン読み込み後はオフラインでも使用可能です。5つのインターフェース言語（简体中文、繁體中文、English、日本語、한국어）に対応しています。', 'ko':'핵심 기술 스택은 ffmpeg.wasm(브라우저 기반 WebAssembly 오디오/비디오 트랜스코딩 엔진)과 Canvas API(이미지 처리)로 구성되어 있으며, 백엔드 서버가 전혀 필요하지 않아 엔진 로드 후 오프라인에서도 사용할 수 있습니다. 5가지 인터페이스 언어(简体中文, 繁體中文, English, 日本語, 한국어)를 지원합니다.' },
+    'about.p3': { 'zh-CN':'本站通过 Google AdSense 展示广告以维持运营。所有功能永久免费，无需注册，无水印，不限使用次数。如果您有任何问题或建议，欢迎通过下方联系方式与我们取得联系。', 'zh-HK':'本站通過 Google AdSense 展示廣告以維持運營。所有功能永久免費，無需註冊，無水印，不限使用次數。如果您有任何問題或建議，歡迎通過下方聯絡方式與我們取得聯繫。', 'en':'This site uses Google AdSense to display ads for operational support. All features are permanently free, no registration, no watermarks, no usage limits. If you have any questions or suggestions, feel free to reach out via the contact methods below.', 'ja':'当サイトは Google AdSense による広告掲載で運営しています。すべての機能は完全無料、登録不要、透かしなし、使用回数制限なし。ご質問やご提案がございましたら、下記のお問い合わせ先までお気軽にご連絡ください。', 'ko':'본 사이트는 Google AdSense를 통해 광고를 게재하여 운영됩니다. 모든 기능은 영구적으로 무료이며, 등록 불필요, 워터마크 없음, 사용 횟수 제한 없음. 질문이나 제안 사항이 있으시면 아래 연락처를 통해 언제든지 문의해 주세요.' },
     'contact.email.label':   { 'zh-CN':'📧 联系方式', 'zh-HK':'📧 聯絡方式', 'en':'📧 Contact', 'ja':'📧 連絡先', 'ko':'📧 연락처' },
     'contact.feedback.label':{ 'zh-CN':'🐛 功能建议 / 问题反馈', 'zh-HK':'🐛 功能建議 / 問題反饋', 'en':'🐛 Feedback / Bug Report', 'ja':'🐛 フィードバック / バグ報告', 'ko':'🐛 피드백 / 버그 신고' },
     'contact.feedback.text': { 'zh-CN':'请通过邮件联系我们，并在标题中注明 [反馈] 或 [问题]。如果您有功能建议，请详细描述使用场景。', 'zh-HK':'請通過電郵聯絡我們，並在標題中註明 [反饋] 或 [問題]。如果您有功能建議，請詳細描述使用場景。', 'en':'Please email us with [Feedback] or [Bug] in the subject line. For feature suggestions, please describe your use case in detail.', 'ja':'件名に [フィードバック] または [バグ] と明記してメールでご連絡ください。機能提案の場合は、ユースケースを詳しく説明してください。', 'ko':'제목에 [피드백] 또는 [버그]를 명시하여 이메일로 연락해 주세요. 기능 제안의 경우 사용 사례를 자세히 설명해 주세요.' },
@@ -172,7 +189,7 @@ const I18N = {
     'footer.privacy': { 'zh-CN':'隐私政策','zh-HK':'私隱政策','en':'Privacy Policy','ja':'プライバシーポリシー','ko':'개인정보처리방침' },
     'footer.terms':   { 'zh-CN':'服务条款','zh-HK':'服務條款','en':'Terms of Service','ja':'利用規約','ko':'서비스 약관' },
     'footer.about':   { 'zh-CN':'联系我们','zh-HK':'聯絡我們','en':'Contact Us','ja':'お問い合わせ','ko':'문의하기' },
-    'footer.copyright': { 'zh-CN':'&copy; 2026 Media Format Conversion Toolbox. All rights reserved.','zh-HK':'&copy; 2026 Media Format Conversion Toolbox. All rights reserved.','en':'&copy; 2026 Media Format Conversion Toolbox. All rights reserved.','ja':'&copy; 2026 Media Format Conversion Toolbox. All rights reserved.','ko':'&copy; 2026 Media Format Conversion Toolbox. All rights reserved.' },
+    'footer.copyright': { 'zh-CN':'&copy; 2026 Media Format Conversion. All rights reserved.','zh-HK':'&copy; 2026 Media Format Conversion. All rights reserved.','en':'&copy; 2026 Media Format Conversion. All rights reserved.','ja':'&copy; 2026 Media Format Conversion. All rights reserved.','ko':'&copy; 2026 Media Format Conversion. All rights reserved.' },
     'theme.dark_hint':  { 'zh-CN':'点击切换为白天模式','zh-HK':'點擊切換為白天模式','en':'Switch to light mode','ja':'ライトモードに切替','ko':'라이트 모드로 전환' },
     'theme.light_hint': { 'zh-CN':'点击切换为夜间模式','zh-HK':'點擊切換為夜間模式','en':'Switch to dark mode','ja':'ダークモードに切替','ko':'다크 모드로 전환' },
     'accent.cyan_hint':  { 'zh-CN':'点击切换为粉霓虹主题','zh-HK':'點擊切換為粉霓虹主題','en':'Switch to pink neon','ja':'ピンクネオンに切替','ko':'핑크 네온으로 전환' },
@@ -235,6 +252,17 @@ const I18N = {
 
 document.addEventListener('DOMContentLoaded', () => {
   I18N.init();
+
+  // Ensure about section text is translated
+  function updateAbout() {
+    const p1 = document.querySelector('[data-i18n="about.p1"]');
+    const p2 = document.querySelector('[data-i18n="about.p2"]');
+    const p3 = document.querySelector('[data-i18n="about.p3"]');
+    if (p1) p1.textContent = I18N.t('about.p1');
+    if (p2) p2.textContent = I18N.t('about.p2');
+    if (p3) p3.textContent = I18N.t('about.p3');
+  }
+  updateAbout();
   const themeBtn = document.getElementById('btn-theme');
   const accentBtn = document.getElementById('btn-accent');
   if (themeBtn) {
@@ -257,7 +285,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   const sel = document.getElementById('lang-select');
   if (sel) {
-    sel.addEventListener('change', () => I18N.setLang(sel.value));
+    sel.addEventListener('change', () => {
+      I18N.setLang(sel.value);
+      updateAbout();
+    });
   }
 });
 </script>
