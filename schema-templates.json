@@ -1,0 +1,227 @@
+{
+  "说明": "mediaconvertion.com 结构化数据模板集 — 根据页面类型选择对应模板插入 <head>",
+  "模板列表": [
+    {
+      "使用位置": "首页 (/)",
+      "文件名": "homepage-schema.jsonld",
+      "说明": "WebSite + Organization + WebApplication 合并模式",
+      "推荐使用": "立即",
+      "代码": {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://mediaconvertion.com/#website",
+            "url": "https://mediaconvertion.com",
+            "name": "Media Format Conversion",
+            "alternateName": "免费浏览器多媒体格式转换器",
+            "description": "浏览器本地处理，不上传服务器 | 免费浏览器多媒体格式转换器 — 图片、音频、视频格式转换工具",
+            "inLanguage": ["zh-CN", "en", "ja", "ko", "zh-HK"],
+            "publisher": { "@id": "https://mediaconvertion.com/#organization" }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://mediaconvertion.com/#organization",
+            "name": "Media Convertion",
+            "url": "https://mediaconvertion.com",
+            "description": "纯浏览器端媒体格式转换工具",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "customer support",
+              "email": "icloudmayun@gmail.com"
+            }
+          },
+          {
+            "@type": "WebApplication",
+            "@id": "https://mediaconvertion.com/#webapp",
+            "name": "Media Format Conversion Toolbox",
+            "url": "https://mediaconvertion.com",
+            "applicationCategory": "Multimedia",
+            "operatingSystem": "All (browser-based, client-side)",
+            "browserRequirements": "Requires JavaScript and WebAssembly (WASM) support",
+            "description": "Free browser-based multimedia format converter for images, audio, and video. Files processed locally via ffmpeg.wasm — no upload, no registration, no watermarks.",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock"
+            },
+            "isAccessibleForFree": true,
+            "featureList": [
+              "Image format conversion (50+ formats: WebP, AVIF, PNG, JPEG, BMP, etc.)",
+              "Audio format conversion (MP3, FLAC, WAV, AAC, OPUS, M4A, etc.)",
+              "Video format conversion (MP4, MOV, MKV, WebM, GIF, etc.)",
+              "Chinese social media presets (Douyin, WeChat, RED, Bilibili)",
+              "100% client-side processing — no server upload",
+              "Batch conversion support",
+              "No registration required"
+            ],
+            "maintainer": { "@id": "https://mediaconvertion.com/#organization" },
+            "inLanguage": ["zh-CN", "en", "ja", "ko", "zh-HK"]
+          }
+        ]
+      }
+    },
+    {
+      "使用位置": "图片转换页 (/image/index.html)",
+      "文件名": "image-page-schema.jsonld",
+      "说明": "WebApplication + BreadcrumbList",
+      "推荐使用": "立即",
+      "代码": {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://mediaconvertion.com/image/index.html#webapp",
+            "name": "图片格式转换 — Image Format Converter",
+            "url": "https://mediaconvertion.com/image/index.html",
+            "applicationCategory": "Multimedia",
+            "operatingSystem": "All (browser-based, client-side)",
+            "browserRequirements": "Requires JavaScript and WebAssembly support",
+            "description": "免费在线图片格式转换器，支持 50+ 种图片格式互转（WebP、AVIF、JPEG、PNG、BMP、HEIC、SVG 等）。纯浏览器本地处理，文件不上传服务器，无需注册不限次数。",
+            "image": "https://mediaconvertion.com/image/og-image.png",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock"
+            },
+            "isAccessibleForFree": true,
+            "featureList": [
+              "支持 WebP、AVIF、PNG、JPEG、BMP、GIF、SVG、HEIC、ICO、TIFF、PSD、TGA、HDR、RAW、PDF 格式互转",
+              "批量转换，同时处理多张图片",
+              "质量调节与智能压缩",
+              "尺寸调整与裁剪",
+              "纯浏览器端处理，不上传服务器"
+            ],
+            "maintainer": { "@id": "https://mediaconvertion.com/#organization" },
+            "inLanguage": ["zh-CN", "en", "ja", "ko", "zh-HK"]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://mediaconvertion.com/image/index.html#breadcrumb",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://mediaconvertion.com" },
+              { "@type": "ListItem", "position": 2, "name": "图片格式转换", "item": "https://mediaconvertion.com/image/index.html" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "使用位置": "音频转换页 (/audio/index.html)",
+      "文件名": "audio-page-schema.jsonld",
+      "说明": "WebApplication + BreadcrumbList",
+      "推荐使用": "立即",
+      "代码": {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://mediaconvertion.com/audio/index.html#webapp",
+            "name": "音频格式转换 — Audio Format Converter",
+            "url": "https://mediaconvertion.com/audio/index.html",
+            "applicationCategory": "Multimedia",
+            "operatingSystem": "All (browser-based, client-side)",
+            "browserRequirements": "Requires JavaScript and WebAssembly support",
+            "description": "免费在线音频格式转换器，支持 MP3、WAV、OGG、AAC、FLAC、OPUS、M4A 等格式互转。可调比特率（64-320kbps）、采样率（8k-96kHz）与声道。纯浏览器本地处理，文件不上传服务器。",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock"
+            },
+            "isAccessibleForFree": true,
+            "featureList": [
+              "支持 MP3、WAV、OGG、AAC、FLAC、OPUS、M4A、WMA、AIFF、AC3、AMR 格式互转",
+              "比特率调节（64-320kbps）",
+              "采样率调节（8kHz-96kHz）",
+              "声道选择（单声道/立体声）",
+              "纯浏览器端处理，不上传服务器"
+            ],
+            "maintainer": { "@id": "https://mediaconvertion.com/#organization" },
+            "inLanguage": ["zh-CN", "en", "ja", "ko", "zh-HK"]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://mediaconvertion.com/audio/index.html#breadcrumb",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://mediaconvertion.com" },
+              { "@type": "ListItem", "position": 2, "name": "音频格式转换", "item": "https://mediaconvertion.com/audio/index.html" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "使用位置": "视频转换页 (/video/index.html)",
+      "文件名": "video-page-schema.jsonld",
+      "说明": "WebApplication + BreadcrumbList",
+      "推荐使用": "立即",
+      "代码": {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://mediaconvertion.com/video/index.html#webapp",
+            "name": "视频格式转换 — Video Format Converter",
+            "url": "https://mediaconvertion.com/video/index.html",
+            "applicationCategory": "Multimedia",
+            "operatingSystem": "All (browser-based, client-side)",
+            "browserRequirements": "Requires JavaScript and WebAssembly support",
+            "description": "免费在线视频格式转换器，支持 MP4、MOV、AVI、MKV、WebM、FLV、GIF 等格式互转。内置抖音、微信、小红书、B站一键预设，裁剪到各平台最佳尺寸。纯浏览器本地处理，不上传服务器。",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock"
+            },
+            "isAccessibleForFree": true,
+            "featureList": [
+              "支持 MP4、MOV、AVI、MKV、WebM、FLV、GIF 格式互转",
+              "内置抖音/微信/小红书/B站 视频预设，一键适配",
+              "视频裁剪与尺寸调整",
+              "视频压缩",
+              "GIF 导出",
+              "纯浏览器端处理，不上传服务器"
+            ],
+            "maintainer": { "@id": "https://mediaconvertion.com/#organization" },
+            "inLanguage": ["zh-CN", "en", "ja", "ko", "zh-HK"]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://mediaconvertion.com/video/index.html#breadcrumb",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://mediaconvertion.com" },
+              { "@type": "ListItem", "position": 2, "name": "视频格式转换", "item": "https://mediaconvertion.com/video/index.html" }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "额外标签": {
+    "描述": "以下标签应添加到所有页面的 <head> 中",
+    "hreflang示例（首页）": [
+      "<link rel=\"alternate\" hreflang=\"zh-CN\" href=\"https://mediaconvertion.com/\" />",
+      "<link rel=\"alternate\" hreflang=\"zh-HK\" href=\"https://mediaconvertion.com/index-zh-hk.html\" />",
+      "<link rel=\"alternate\" hreflang=\"en\" href=\"https://mediaconvertion.com/index-en.html\" />",
+      "<link rel=\"alternate\" hreflang=\"ja\" href=\"https://mediaconvertion.com/index-ja.html\" />",
+      "<link rel=\"alternate\" hreflang=\"ko\" href=\"https://mediaconvertion.com/index-ko.html\" />",
+      "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://mediaconvertion.com/\" />"
+    ],
+    "canonical": "<link rel=\"canonical\" href=\"https://mediaconvertion.com/\" />",
+    "Open Graph": [
+      "<meta property=\"og:type\" content=\"website\" />",
+      "<meta property=\"og:title\" content=\"Media Format Conversion — 免费浏览器多媒体格式转换器\" />",
+      "<meta property=\"og:description\" content=\"浏览器本地处理，不上传服务器。图片、音频、视频格式转换，无需注册，完全免费。\" />",
+      "<meta property=\"og:url\" content=\"https://mediaconvertion.com/\" />",
+      "<meta property=\"og:locale\" content=\"zh_CN\" />"
+    ],
+    "Twitter Card": [
+      "<meta name=\"twitter:card\" content=\"summary_large_image\" />",
+      "<meta name=\"twitter:title\" content=\"Media Format Conversion — 免费浏览器多媒体格式转换器\" />",
+      "<meta name=\"twitter:description\" content=\"浏览器本地处理，不上传服务器。图片、音频、视频格式转换，无需注册，完全免费。\" />"
+    ]
+  }
+}
